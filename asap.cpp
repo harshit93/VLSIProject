@@ -132,8 +132,16 @@ int main()
 		{
 			if(arr[j]->control_step == i)
 			{
+				if(arr[j]->next != NULL)
+				{
+					cout<<arr[j]->node_number<<" "<<arr[j]->node_name<<" -> "<<arr[j]->next->node_number<<endl;
+					count++;
+				}
+				else
+				{
 					cout<<arr[j]->node_number<<" "<<arr[j]->node_name<<endl;
 					count++;
+				}
 			}
 		}
 		cout<<endl;
