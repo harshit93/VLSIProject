@@ -1,0 +1,22 @@
+digraph cosine2 {
+    node [fontcolor=white,style=filled,color="160,60,176"];
+    1 [label = mul];
+    2 [label = mul];
+    3 [label = mul];
+    4 [label = mul];
+    5 [label = mul];
+    6 [label = mul];
+    7 [label = min];
+    8 [label = min];
+    9 [label = add];
+    10 [label = add];
+    11 [label = les];
+    1 -> 5 [name=1 ];
+    2 -> 5 [name=2 ];
+    3 -> 6 [name=3 ];
+    4 -> 9 [name=4 ];
+    5 -> 7 [name=5 ];
+    6 -> 8 [name=6 ];
+    7 -> 8 [name=7 ];
+    10 -> 11 [name=8 ];
+}

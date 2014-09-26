@@ -1,5 +1,6 @@
 /********************************************/
-/*Program: Graph Reordering in ASAP Form	*
+/*Program: Graph Reordering in ALAP Form	*
+*		   and Mobility 					*
 * Authors: Harshit Agarwal					*
 *		   Nitish Rai						*
 *		   Pritha Ganguly					*
@@ -25,7 +26,9 @@ typedef struct node {
 	node *next = NULL;
 	node *pred = NULL;
 	int node_number;
-	int control_step;
+	int control_step_asap;
+	int control_step_alap;
+	int mobility;
 
 }node;
 
@@ -33,7 +36,7 @@ typedef struct node {
 int main()
 {
 	ifstream file;	//File Handler
-	file.open("graph1.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
+	file.open("test.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
 	node *arr[100000];
 	char num1[10];
 	char num2[10];
@@ -114,16 +117,78 @@ int main()
 		}
 	}
 	file.close();	//Colsing the openend file.
+	int max=1;
+
+	//ASAP Scheduling
 	for(LL i = 0; i < global_count; i++)	//Scheduling the nodes according to ASAP notation.
 	{
 		if(arr[i]->pred == NULL)
-			arr[i]->control_step = 1;	//All the nodes with no predecessor are assigned in the First control step.
+		{
+			arr[i]->control_step_asap = 1;	//All the nodes with no predecessor are assigned in the First control step.
+			arr[i]->mobility = arr[i]->control_step_asap;	//Assigning the control step value to mobility
+		}			
 		else
 		{
-			if(arr[i]->control_step < (arr[i]->pred->control_step + 1))
-				arr[i]->control_step = arr[i]->pred->control_step + 1;	//The other nodes are scheduled according to the data dependencies.
+			if(arr[i]->control_step_asap < (arr[i]->pred->control_step_asap + 1))	//ASAP Scheduling for the nodes which are not present in Control Step 1
+			{
+				arr[i]->control_step_asap = arr[i]->pred->control_step_asap + 1;
+				arr[i]->mobility = arr[i]->control_step_asap;
+				if(max< (arr[i]->control_step_asap))
+					max = arr[i]->control_step_asap;
+			}	
 		}
 	}
+	//ALAP Scheduling
+	int max1=max;
+	for(LL i = 0; i < global_count; i++)	//Scheduling the nodes in the last Control Step
+	{
+		if(arr[i]->next == NULL)
+			arr[i]->control_step_alap = max;
+	}
+	for(LL i = 0; i < max; i++)
+	{
+		for(LL j = 0; j < global_count; j++)
+		{
+			if(arr[j]->next != NULL)
+				if(arr[j]->next->control_step_alap == max1)
+					arr[j]->control_step_alap = max1-1;
+		}
+		max1--;
+	}
+	/*for(LL i = 0; i < max; i++)	//Scheduling the nodes in the Control Step other than the last.
+	{
+		max1--;
+		for(LL j = 0;  j < global_count; j++)
+		{
+			if(arr[j]->control_step == max1)
+			{
+				if((arr[j]->control_step + 1) != arr[j]->next->control_step)
+					arr[j]->control_step = (arr[j]->next->control_step) - 1;
+			}
+		}*/	/*if(arr[i]->next != NULL)
+			{
+				if(arr[i]->next->control_step != (arr[i]->control_step + 1))
+					arr[i]->control_step = (arr[i]->next->control_step) -1;
+			}*/
+	//}
+	//	for(LL j = 0; j < global_count; j++)
+	//	{
+			
+				//if(arr[j]->next->control_step == max1)
+				//	arr[j]->control_step = (arr[j]->next->control_step) - 1;
+	//		}
+	//	}
+	//	max1--;
+	//}
+	for(LL i = 0; i < global_count; i++)
+	{	//Calculating the Mobility Value by Subtracting the previously computed ASAP Control Step Value from current ALAP Control Step value.
+		arr[i]->mobility = arr[i]->control_step_alap - arr[i]->control_step_asap;
+		cout<<arr[i]->node_number<<" "<<arr[i]->control_step_asap<<" "<<arr[i]->control_step_alap<<" "<<arr[i]->mobility<<endl;
+	}
+
+
+	//PRINT
+	/*
 	int count=0;
 	for(LL i = 1; i < global_count; i++)	//Printing the Scheduled graph.
 	{
@@ -134,19 +199,22 @@ int main()
 			{
 				if(arr[j]->next != NULL)
 				{
-					cout<<arr[j]->node_number<<" "<<arr[j]->node_name<<" -> "<<arr[j]->next->node_number<<" "<<arr[j]->next->node_name<<endl;
+					cout<<arr[j]->node_number<<" "<<arr[j]->node_name<<" <"<<arr[j]->mobility<<"> "<<" -> "<<arr[j]->next->node_number<<" "<<arr[j]->next->node_name<<endl;
 					count++;
 				}
 				else
 				{
-					cout<<arr[j]->node_number<<" "<<arr[j]->node_name<<endl;
+					cout<<arr[j]->node_number<<" "<<arr[j]->node_name<<" <"<<arr[j]->mobility<<"> "<<endl;
 					count++;
 				}
 			}
 		}
 		cout<<endl;
+		cout<<count<<endl;
 		if(count == global_count)
 			break;
-	}
+	}*/
+	//for(LL i = 0; i < global_count; i++)
+	//	cout<<arr[i]->node_number<<" "<<arr[i]->mobility<<endl;
 	return 0;
 }
