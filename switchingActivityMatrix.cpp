@@ -341,25 +341,42 @@ int main()
 	}
 	total = total * 2;
 	DD sam[total][total];
-	LL inputs[total];
-	for(LL i=0; i < total; i++)
-	{
-		inputs[i]=binaryConv(randomgen());
-		//cout<<inputs[i]<<endl;
-	}
-	for(LL i = 0 ; i<total; i++)
-	{
-		for(LL j = 0; j<total; j++)
+	LL lowest = 999999;
+	DD samlowest[total][total];
+	for(LL x = 0; x < 10000; x++)
+	{	
+		LL sum = 0;
+		DD sam1[total][total];
+		LL inputs[total];
+		for(LL i=0; i < total; i++)
 		{
-			if(i==j)
+			inputs[i]=binaryConv(randomgen());
+			//cout<<inputs[i]<<endl;
+		}
+		for(LL i = 0 ; i<total; i++)
+		{
+			for(LL j = 0; j<total; j++)
 			{
-				sam[i][j]=0;
+				if(i==j)
+				{
+					sam[i][j]=0;
+					sam1[i][j]=0;
+				}
+				else
+				{
+					//cout<<totalflip(inputs[i])<<endl;
+					sam[i][j] = int(sam[i][j] + ((flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i]))) % 1000;
+					sam1[i][j] = (flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i]);
+					sum = sum + (flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i]);
+				}
 			}
-			else
-			{
-				cout<<inputs[i]<<endl;
-				sam[i][j] = (flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i]);
-			}
+		}
+		if(sum < lowest)
+		{
+			lowest = sum;
+			for(LL i = 0; i < total; i++)
+				for(LL j = 0; j < total; j++)
+					samlowest[i][j]=sam1[i][j];
 		}
 	}
 
@@ -367,7 +384,17 @@ int main()
 	{
 		for(LL j=0;j<total;j++)
 		{
+			sam[i][j] = sam[i][j] / 16;
 			cout<<sam[i][j]<<"   ";
+		}
+		cout<<endl;
+	}
+
+	for(LL i =0; i<total; i++)
+	{
+		for(LL j=0;j<total;j++)
+		{
+			cout<<samlowest[i][j]<<"   ";
 		}
 		cout<<endl;
 	}
