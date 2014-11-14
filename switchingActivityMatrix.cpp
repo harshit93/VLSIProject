@@ -38,6 +38,7 @@ typedef struct node {
 
 }node;
 
+//Random Generator Function
 LL randomgen()
 {
 	LL num;
@@ -45,23 +46,22 @@ LL randomgen()
 	//cout<<num<<endl;
 	return num;
 }
-LL ele=0;
-LL binaryConv(LL num) 
-{
-	LL remain;
-	if(num <= 1) {
-		//cout << num;
-		return -1;
-	}
 
-	remain = num%2;
-	binaryConv(num >> 1); 
-	//cout << remain;
-	ele = ele + remain;
-	ele = ele *10;
-	return ele;
+//Converting Numbers to Binary
+LL binaryConv(LL num)
+{
+	LL dec,rem,i=1,sum=0;
+    do
+    {
+        rem=num%2;
+        sum=sum + (i*rem);
+        num=num/2;
+        i=i*10;
+    }while(num>0);
+    return sum;
 }
 
+//Number of Transitions in an input vector.
 LL flipCounter(LL num)
 {
 	LL flip=0;
@@ -77,6 +77,8 @@ LL flipCounter(LL num)
 	return flip;
 }
 
+
+//Hamming Distance between two input vectors.
 LL hammingDist(LL num1, LL num2)
 {
 	LL hamCount=0;
@@ -93,6 +95,7 @@ LL hammingDist(LL num1, LL num2)
 	return hamCount;
 }
 
+//Total number of transitions possible in the generated input vector.
 LL totalflip(LL num)
 {
 	LL totalCountOfFlip=0;
@@ -329,18 +332,19 @@ int main()
 
 
 
-	//Switching Activity Matrix formation
+	//SWITCHING ACTIVITY MATRIX FORMATION
 	LL total=0;
 	for(LL i = 0; i<global_count;i++)
 	{
 		if(arr[i]->pred == NULL)
 			total++;
 	}
+	total = total * 2;
 	DD sam[total][total];
 	LL inputs[total];
 	for(LL i=0; i < total; i++)
 	{
-		inputs[i]=randomgen();
+		inputs[i]=binaryConv(randomgen());
 		//cout<<inputs[i]<<endl;
 	}
 	for(LL i = 0 ; i<total; i++)
@@ -353,7 +357,7 @@ int main()
 			}
 			else
 			{
-				cout<<totalflip(inputs[i])<<endl;
+				cout<<inputs[i]<<endl;
 				sam[i][j] = (flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i]);
 			}
 		}
