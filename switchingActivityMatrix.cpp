@@ -25,7 +25,7 @@ using namespace std;
 #define COMPARATOR 1
 
 //Structure for the Node to store the individual elements of the graphs.
-typedef float DD;
+typedef double DD;
 typedef unsigned long long int LL;
 typedef struct node {
 	char node_name[10];
@@ -35,6 +35,7 @@ typedef struct node {
 	int control_step_asap;
 	int control_step_alap;
 	int mobility;
+	float weight;
 
 }node;
 
@@ -108,7 +109,9 @@ LL totalflip(LL num)
 //Main Function starts. All the computation of the algorithm resides here.
 int main()
 {
+	//Seed for the random number
 	srand(time(NULL));
+
 	//binaryConv(randomgen());
 	ifstream file;	//File Handler
 	file.open("test.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
@@ -191,7 +194,7 @@ int main()
 			}
 		}
 	}
-	file.close();	//Colsing the openend file.
+	file.close();	//Closing the openend file.
 	int max=1;
 
 	//ASAP Scheduling
@@ -236,7 +239,7 @@ int main()
 		arr[i]->mobility = arr[i]->control_step_alap - arr[i]->control_step_asap;
 		
 	}
-
+/*
 	//LIST BASED SCHEDULING
 	int mul=MULTIPLIER;
 	int add=ADDER;
@@ -330,7 +333,7 @@ int main()
 	for(LL i =0 ;i<global_count;i++)
 	{}	//cout<<arr[i]->node_number<<" "<<arr[i]->control_step_asap<<" "<<arr[i]->mobility<<endl;
 
-
+*/
 
 	//SWITCHING ACTIVITY MATRIX FORMATION
 	LL total=0;
@@ -365,7 +368,7 @@ int main()
 				else
 				{
 					//cout<<totalflip(inputs[i])<<endl;
-					sam[i][j] = int(sam[i][j] + ((flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i]))) % 1000;
+					sam[i][j] = int(sam[i][j] + ((flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i])));
 					sam1[i][j] = (flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i]);
 					sum = sum + (flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i]);
 				}
@@ -384,7 +387,7 @@ int main()
 	{
 		for(LL j=0;j<total;j++)
 		{
-			sam[i][j] = sam[i][j] / 16;
+			sam[i][j] = sam[i][j] / 10000;
 			cout<<sam[i][j]<<"   ";
 		}
 		cout<<endl;
@@ -394,9 +397,9 @@ int main()
 	{
 		for(LL j=0;j<total;j++)
 		{
-			cout<<samlowest[i][j]<<"   ";
+			//cout<<samlowest[i][j]<<"   ";
 		}
-		cout<<endl;
+		//cout<<endl;
 	}
 
 	//PRINT
