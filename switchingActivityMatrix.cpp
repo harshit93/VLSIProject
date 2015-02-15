@@ -3,10 +3,13 @@
 *		   and Mobility 					*
 * Authors: Harshit Agarwal					*
 *		   Nitish Rai						*
-* Version: 1.1								*
+* Version: 2.0								*
 * Description: This program takes a .dot 	*
 * file as input and evaluates the ASAP		*
-* form of the graph mentioned in the file.	*
+* form of the graph mentioned in the file.  *
+* Also takes care of the Switching Activity *
+* Matrix formation. And the path scheduling *
+* hence.									*
 * Structures used: Struct, Pointers, Loops,	*
 * File Handlers, Library Functions.			*/
 /********************************************/
@@ -17,6 +20,7 @@
 #include <string.h>
 #include <assert.h>
 #include <time.h>
+#include <math.h>
 using namespace std;
 
 #define MULTIPLIER 2
@@ -35,7 +39,7 @@ typedef struct node {
 	int control_step_asap;
 	int control_step_alap;
 	int mobility;
-	float weight;
+	DD weight;	//output of the node.
 
 }node;
 
@@ -115,10 +119,10 @@ int main()
 	//binaryConv(randomgen());
 	ifstream file;	//File Handler
 	file.open("test.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
-	node *arr[100000];
+	node *arr[100000];	//node pointer file for all the nodes.
 	char num1[10];
 	char num2[10];
-	int global_count=0;	//Global counter for the number of nodes present in the input graph.
+	LL global_count=0;	//Global counter for the number of nodes present in the input graph.
 	if(file.is_open())
 	{
 		string line;
@@ -151,6 +155,7 @@ int main()
 					arr[global_count] = vertex;	//Adding the node pointer to an array, for access later while defining links.
 					global_count++;
 				}
+				
 				if(line[i] == '-' && line[i+1] == '>')	//Condition for accessing the lines where links are defined.
 				{
 					int k=0,l=0;
@@ -239,7 +244,7 @@ int main()
 		arr[i]->mobility = arr[i]->control_step_alap - arr[i]->control_step_asap;
 		
 	}
-/*
+
 	//LIST BASED SCHEDULING
 	int mul=MULTIPLIER;
 	int add=ADDER;
@@ -332,8 +337,11 @@ int main()
 	}
 	for(LL i =0 ;i<global_count;i++)
 	{}	//cout<<arr[i]->node_number<<" "<<arr[i]->control_step_asap<<" "<<arr[i]->mobility<<endl;
+	cout<<global_count;
+	for(int i =0 ; i<global_count; i++)
+		cout<<arr[i]->node_number<<endl;//" "<<arr[i]->pred<<endl;
 
-*/
+
 
 	//SWITCHING ACTIVITY MATRIX FORMATION
 	LL total=0;
@@ -341,24 +349,29 @@ int main()
 	{
 		if(arr[i]->pred == NULL)
 			total++;
-	}
+	}	//Calculating the input nodes.
+
+	LL global_count_sam;
+	global_count_sam = global_count + total + total;
 	total = total * 2;
-	DD sam[total][total];
+	DD sam[global_count_sam][global_count_sam];
 	LL lowest = 999999;
-	DD samlowest[total][total];
+	DD samlowest[global_count_sam][global_count_sam];
 	for(LL x = 0; x < 10000; x++)
 	{	
 		LL sum = 0;
-		DD sam1[total][total];
-		LL inputs[total];
-		for(LL i=0; i < total; i++)
+		DD sam1[global_count_sam][global_count_sam];
+		LL inputs[global_count_sam];
+		LL inputbin[global_count_sam];
+		for(LL i=0; i < global_count_sam; i++)
 		{
-			inputs[i]=binaryConv(randomgen());
+			inputs[i]=randomgen();
+			inputbin[i]=binaryConv(inputs[i]);
 			//cout<<inputs[i]<<endl;
 		}
-		for(LL i = 0 ; i<total; i++)
+		for(LL i = 0 ; i<global_count_sam; i++)
 		{
-			for(LL j = 0; j<total; j++)
+			for(LL j = 0; j<global_count_sam; j++)
 			{
 				if(i==j)
 				{
@@ -368,24 +381,24 @@ int main()
 				else
 				{
 					//cout<<totalflip(inputs[i])<<endl;
-					sam[i][j] = int(sam[i][j] + ((flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i])));
-					sam1[i][j] = (flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i]);
-					sum = sum + (flipCounter(inputs[i]) + hammingDist(inputs[i],inputs[j])) / totalflip(inputs[i]);
+					sam[i][j] = int(sam[i][j] + ((flipCounter(inputbin[i]) + hammingDist(inputbin[i],inputbin[j])) / totalflip(inputbin[i])));
+					sam1[i][j] = (flipCounter(inputbin[i]) + hammingDist(inputbin[i],inputbin[j])) / totalflip(inputbin[i]);
+					sum = sum + (flipCounter(inputbin[i]) + hammingDist(inputbin[i],inputbin[j])) / totalflip(inputbin[i]);
 				}
 			}
 		}
 		if(sum < lowest)
 		{
 			lowest = sum;
-			for(LL i = 0; i < total; i++)
-				for(LL j = 0; j < total; j++)
+			for(LL i = 0; i < global_count_sam; i++)
+				for(LL j = 0; j < global_count_sam; j++)
 					samlowest[i][j]=sam1[i][j];
 		}
 	}
 
-	for(LL i =0; i<total; i++)
+	for(LL i =0; i<global_count_sam; i++)
 	{
-		for(LL j=0;j<total;j++)
+		for(LL j=0;j<global_count_sam;j++)
 		{
 			sam[i][j] = sam[i][j] / 10000;
 			cout<<sam[i][j]<<"   ";
@@ -400,6 +413,38 @@ int main()
 			//cout<<samlowest[i][j]<<"   ";
 		}
 		//cout<<endl;
+	}
+
+	for(LL j =0 ; j<10000; j++)
+	{
+		for(LL i = 0; i<global_count; i++)
+		{
+			if(arr[i]->pred == NULL){
+				int input1=randomgen();
+				int input2=randomgen();
+				if(arr[i]->node_name == "add")
+					arr[i]->next->weight = arr[i]->next->weight + (input1 + input2);
+				if(arr[i]->node_name == "min")
+					arr[i]->next->weight = arr[i]->next->weight + (abs(input1-input2));
+				if(arr[i]->node_name == "mul")
+					arr[i]->next->weight = arr[i]->next->weight + (input1 * input2);
+				if(arr[i]->node_name == "div")
+					arr[i]->next->weight == arr[i]->next->weight + input1/input2;
+				if(arr[i]->node_name == "exp")
+					arr[i]->next->weight == arr[i]->next->weight + pow(input1,input2);
+				if(arr[i]->node_name == "les")
+					if(input1 < input2)
+						arr[i]->next->weight = arr[i]->next->weight + 1;
+				else
+					arr[i]->next->weight = arr[i]->next->weight + 0;
+				if(arr[i]->node_name == "grt")
+					if(input1 > input2)
+						arr[i]->next->weight = arr[i]->next->weight + 1;
+					else
+						arr[i]->next->weight = arr[i]->next->weight + 0;
+			}
+			
+		}
 	}
 
 	//PRINT
@@ -431,5 +476,7 @@ int main()
 	}*/
 	//for(LL i = 0; i < global_count; i++)
 	//	cout<<arr[i]->node_number<<" "<<arr[i]->mobility<<endl;
+		for(LL i=0; i<global_count; i++)
+		free(arr[i]);
 	return 0;
 }
