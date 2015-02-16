@@ -36,6 +36,8 @@ typedef struct node {
 	node *next = NULL;
 	node *pred = NULL;
 	int node_number;
+	LL next_value;
+	DD path_value;
 	int control_step_asap;
 	int control_step_alap;
 	int mobility;
@@ -155,7 +157,7 @@ int main()
 					arr[global_count] = vertex;	//Adding the node pointer to an array, for access later while defining links.
 					global_count++;
 				}
-				
+
 				if(line[i] == '-' && line[i+1] == '>')	//Condition for accessing the lines where links are defined.
 				{
 					int k=0,l=0;
@@ -337,21 +339,132 @@ int main()
 	}
 	for(LL i =0 ;i<global_count;i++)
 	{}	//cout<<arr[i]->node_number<<" "<<arr[i]->control_step_asap<<" "<<arr[i]->mobility<<endl;
-	cout<<global_count;
-	for(int i =0 ; i<global_count; i++)
-		cout<<arr[i]->node_number<<endl;//" "<<arr[i]->pred<<endl;
+	//cout<<global_count;
+	//for(int i =0 ; i<global_count; i++)
+	//	cout<<arr[i]->node_number<<endl;//" "<<arr[i]->pred<<endl;
 
 
 
 	//SWITCHING ACTIVITY MATRIX FORMATION
 	LL total=0;
+	LL inputarray[global_count*2][2];
+	int index=0;
 	for(LL i = 0; i<global_count;i++)
 	{
-		if(arr[i]->pred == NULL)
+		if(arr[i]->pred == NULL){
 			total++;
-	}	//Calculating the input nodes.
+			inputarray[index][0] = arr[i]->node_number;
+			index++;
+			inputarray[index][0] = arr[i]->node_number;
+			index++;
+		}
+	}	//Calculating the input nodes at level 0.
 
-	LL global_count_sam;
+	LL counter_input[global_count+1]= {0};
+	for(LL i = 0; i<global_count; i++)
+		if(arr[i]->next!=NULL)
+			counter_input[arr[i]->next->node_number]++;
+	for(LL i = 0; i<global_count+1; i++)
+	{
+		if(counter_input[i]==1) {
+			inputarray[index][0] = i;
+			index++;
+		}
+	}
+	for(LL x = 1; x <= 10000; x++)
+	{
+		for(LL i = 0; i < index; i++)
+			inputarray[i][1] = binaryConv(randomgen());
+		for(LL i = 0; i < global_count; i++)
+			arr[i]->next_value = binaryConv(randomgen());
+		for(LL i = 0; i < global_count; i++)
+		{
+			LL hamming1,hamming2;
+			int flag =0;
+			if(arr[i]->pred == NULL)
+			{
+				for(LL j = 0; j < index; j++)
+				{
+					if(inputarray[j][0] == arr[i]->node_number && flag == 0){
+						hamming1 = hammingDist(inputarray[j][1],arr[i]->next_value);
+						flag=1; }
+					if(inputarray[j][0] == arr[i]->node_number)
+						hamming2 = hammingDist(inputarray[j][1],arr[i]->next_value);
+				}
+				if(hamming1 < hamming2)
+					arr[i]->path_value = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming1 ) / totalflip(arr[i]->next_value);
+				else
+					arr[i]->path_value = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming2 ) / totalflip(arr[i]->next_value);
+				if(arr[i]->next->pred != arr[i])
+				{
+					flag=0;
+					for(LL j = 0; j < index; j++)
+					{
+						if(inputarray[j][0] == arr[i]->next->pred->node_number && flag == 0){
+							hamming1 = hammingDist(inputarray[j][1],arr[i]->next_value);
+							flag=1; }
+						if(inputarray[j][0] == arr[i]->next->pred->node_number)
+							hamming2 = hammingDist(inputarray[j][1],arr[i]->next_value);
+					}
+					DD temp1;
+					if(hamming1 < hamming2)
+						temp1 = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming1 ) / totalflip(arr[i]->next_value);
+					else
+						temp1 = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming2 ) / totalflip(arr[i]->next_value);
+					if(temp1 < arr[i]->path_value)
+						arr[i]->path_value = temp1;
+				}
+			}
+			else
+			{
+				hamming1 = hamming2 = 0;
+				for(LL j = 0; j < index; j++)
+				{
+					if(inputarray[j][0] == arr[i]->node_number)
+					{
+						hamming1 = hammingDist(inputarray[j][1], arr[i]->next_value);
+					}
+				}
+				if(hamming1 == 0)
+				{
+					flag=0;
+					for(LL j = 0; j < global_count; j++)
+					{
+						if(arr[j]->next == arr[i] && flag == 0) {
+							hamming1 = hammingDist(arr[j]->next_value, arr[i]->next_value);
+							flag = 1;
+						}
+						if(arr[j]->next == arr[i])
+							hamming2 = hammingDist(arr[j]->next_value, arr[i]->next_value);
+					}
+				}
+				else
+				{
+					for(LL j = 0; j < global_count; j++)
+					{
+						if(arr[j]->next == arr[i])
+							hamming2 = hammingDist(arr[j]->next_value, arr[i]->next_value);
+					}
+				}
+				if(hamming1 < hamming2)
+					arr[i]->path_value = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming1 ) / totalflip(arr[i]->next_value);
+				else
+					arr[i]->path_value = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming2 ) / totalflip(arr[i]->next_value);
+			}
+		}
+	}
+	for(LL i = 0; i < global_count; i++)
+		cout<<arr[i]->node_number<<" "<<(arr[i]->path_value)/10000<<endl;
+
+
+
+
+
+
+
+	
+
+	LL global_count_sam;	//Number of edges to be calculated at.
 	global_count_sam = global_count + total + total;
 	total = total * 2;
 	DD sam[global_count_sam][global_count_sam];
