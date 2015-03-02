@@ -49,7 +49,7 @@ typedef struct node {
 LL randomgen()
 {
 	LL num;
-	num=rand() % 10000 + 1;
+	num=rand() % 1000000 + 1;
 	//cout<<num<<endl;
 	return num;
 }
@@ -205,7 +205,7 @@ int main()
 	int max=1;
 
 	//ASAP Scheduling
-	for(LL i = 0; i < global_count; i++)	//Scheduling the nodes according to ASAP notation.
+	/*for(LL i = 0; i < global_count; i++)	//Scheduling the nodes according to ASAP notation.
 	{
 		if(arr[i]->pred == NULL)
 		{
@@ -222,10 +222,12 @@ int main()
 					max = arr[i]->control_step_asap;
 			}	
 		}
-	}
+	}*/
+
+
 	//ALAP Scheduling
 	int max1=max;
-	for(LL i = 0; i < global_count; i++)	//Scheduling the nodes in the last Control Step
+	/*for(LL i = 0; i < global_count; i++)	//Scheduling the nodes in the last Control Step
 	{
 		if(arr[i]->next == NULL)
 			arr[i]->control_step_alap = max;
@@ -245,10 +247,10 @@ int main()
 	{	//Calculating the Mobility Value by Subtracting the previously computed ASAP Control Step Value from current ALAP Control Step value.
 		arr[i]->mobility = arr[i]->control_step_alap - arr[i]->control_step_asap;
 		
-	}
+	}*/
 
 	//LIST BASED SCHEDULING
-	int mul=MULTIPLIER;
+	/*int mul=MULTIPLIER;
 	int add=ADDER;
 	int sub=SUBTRACTOR;
 	int comp=COMPARATOR;
@@ -342,7 +344,7 @@ int main()
 	//cout<<global_count;
 	//for(int i =0 ; i<global_count; i++)
 	//	cout<<arr[i]->node_number<<endl;//" "<<arr[i]->pred<<endl;
-
+*/
 
 
 	//SWITCHING ACTIVITY MATRIX FORMATION
@@ -454,7 +456,7 @@ int main()
 		}
 	}
 	for(LL i = 0; i < global_count; i++)
-		cout<<arr[i]->node_number<<" "<<(arr[i]->path_value)/10000<<endl;
+		cout<<arr[i]->node_number<<" "<<(arr[i]->path_value)/* /10000 */<<endl;
 
 
 
@@ -513,7 +515,7 @@ int main()
 	{
 		for(LL j=0;j<global_count_sam;j++)
 		{
-			sam[i][j] = sam[i][j] / 10000;
+			sam[i][j] = sam[i][j] /* /10000 */;
 			cout<<sam[i][j]<<"   ";
 		}
 		cout<<endl;
@@ -560,6 +562,14 @@ int main()
 		}
 	}
 
+
+
+
+
+
+
+
+
 	//PRINT
 	/*
 	int count=0;
@@ -589,7 +599,14 @@ int main()
 	}*/
 	//for(LL i = 0; i < global_count; i++)
 	//	cout<<arr[i]->node_number<<" "<<arr[i]->mobility<<endl;
-		for(LL i=0; i<global_count; i++)
-		free(arr[i]);
+		for(LL i=0; i<global_count; i++) {
+			free(arr[i]);
+		//	free(sam[i]);
+			//free(sam1[i]);
+			//free(inputs[i]);
+			//free(inputbin[i]);
+		//	free(samlowest[i]);
+		}
+		//free(global_count);
 	return 0;
 }
