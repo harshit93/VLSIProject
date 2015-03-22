@@ -42,6 +42,7 @@ typedef struct node {
 	int control_step_alap;
 	int mobility;
 	DD weight;	//output of the node.
+	LL clique;
 
 }node;
 
@@ -120,7 +121,7 @@ int main()
 
 	//binaryConv(randomgen());
 	ifstream file;	//File Handler
-	file.open("test.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
+	file.open("Benchmarks/hal.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
 	node *arr[100000];	//node pointer file for all the nodes.
 	char num1[10];
 	char num2[10];
@@ -455,8 +456,8 @@ int main()
 			}
 		}
 	}
-	for(LL i = 0; i < global_count; i++)
-		cout<<arr[i]->node_number<<" "<<(arr[i]->path_value)/* /10000 */<<endl;
+	//for(LL i = 0; i < global_count; i++)
+	//	 cout<<arr[i]->node_number<<" "<<(arr[i]->path_value)/* /10000 */<<endl;
 
 
 
@@ -516,9 +517,9 @@ int main()
 		for(LL j=0;j<global_count_sam;j++)
 		{
 			sam[i][j] = sam[i][j] /* /10000 */;
-			cout<<sam[i][j]<<"   ";
+			//cout<<sam[i][j]<<"   ";
 		}
-		cout<<endl;
+		//cout<<endl;
 	}
 
 	for(LL i =0; i<total; i++)
@@ -563,9 +564,45 @@ int main()
 	}
 
 
+	//CLIQUE PARTITION METHOD
+	for(LL i = 0; i< global_count; i++)
+		arr[i]->clique = i+1;
 
+	//for(LL i=0;i<global_count;i++)
+		//cout<<arr[i]->node_name<<" -> "<<arr[i]->clique<<endl;
 
-
+	for(LL i = 0; i<global_count; i++)
+	{
+		int countcpm = 0;
+		for(LL l = 0; l<global_count; l++)
+			if(strcmp(arr[i]->node_name, arr[l]->node_name) == 0)
+				countcpm++;
+		//cout<<"countcpm"<<countcpm<<endl;
+		int k=0;
+		while(k<countcpm)
+		{
+			DD lowestSwitchingValue=999999;
+			LL lowestSwitchingClique=0;
+			for(LL j = 0; j<global_count; j++)
+			{
+				if((strcmp(arr[i]->node_name, arr[j]->node_name) == 0) && (arr[i]->clique != arr[j]->clique))
+				{
+					//cout<<i<<" "<<j<<endl;
+					if(sam[i][j] < lowestSwitchingValue) {
+						lowestSwitchingValue = sam[i][j];
+						lowestSwitchingClique = j;
+					}
+				}
+			}
+			//cout<<"countcpm"<<countcpm<<endl;
+			k++;
+			if(arr[lowestSwitchingClique]->next == arr[i] || arr[i]->next == arr[lowestSwitchingClique])
+				arr[lowestSwitchingClique]->clique = arr[i]->clique;
+		}
+	}
+	//PRINTING the clique number of the functional units.
+	for(LL i=0;i<global_count;i++)
+		cout<<arr[i]->node_name<<" -> "<<arr[i]->clique<<endl;
 
 
 
