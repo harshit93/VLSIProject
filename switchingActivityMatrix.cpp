@@ -3,13 +3,14 @@
 *		   and Mobility 					*
 * Authors: Harshit Agarwal					*
 *		   Nitish Rai						*
-* Version: 2.0								*
+* Version: 3.0								*
 * Description: This program takes a .dot 	*
 * file as input and evaluates the ASAP		*
 * form of the graph mentioned in the file.  *
 * Also takes care of the Switching Activity *
 * Matrix formation. And the path scheduling *
-* hence.									*
+* hence.
+* The program now 									*
 * Structures used: Struct, Pointers, Loops,	*
 * File Handlers, Library Functions.			*/
 /********************************************/
@@ -33,8 +34,8 @@ typedef double DD;
 typedef unsigned long long int LL;
 typedef struct node {
 	char node_name[10];
-	node *next = NULL;
-	node *pred = NULL;
+	node *next[100] = {NULL};
+	node *pred[100] = {NULL};
 	int node_number;
 	LL next_value;
 	DD path_value;
@@ -121,7 +122,7 @@ int main()
 
 	//binaryConv(randomgen());
 	ifstream file;	//File Handler
-	file.open("Benchmarks/hal.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
+	file.open("Benchmarks/cosine1.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
 	node *arr[100000];	//node pointer file for all the nodes.
 	char num1[10];
 	char num2[10];
@@ -130,7 +131,7 @@ int main()
 	{
 		string line;
 		getline(file, line);
-		getline(file, line);
+		getline(file, line);	
 		while(!file.eof())
 		{
 			getline(file, line);
@@ -194,8 +195,16 @@ int main()
 						if(arr[j]->node_number == atoi(num2))
 							vertex2 = arr[j];
 					}
-					vertex1->next = vertex2;	//Defining the next relationship from one node to the other.
-					vertex2->pred = vertex1;	//Defining the previous relationship in the reverse order.
+					LL xcount=0, ycount=0;
+					for(LL l = 0; l<100; l++)
+					{
+						if(vertex1->next[l] != NULL)
+							xcount++;
+						if(vertex2->pred[l] != NULL)
+							ycount++;
+					}
+					vertex1->next[xcount] = vertex2;	//Defining the next relationship from one node to the other.
+					vertex2->pred[ycount] = vertex1;	//Defining the previous relationship in the reverse order.
 					for(int j=0; j<10; j++)
 						num1[j]=num2[j]='\0';
 				}
@@ -204,51 +213,80 @@ int main()
 	}
 	file.close();	//Closing the openend file.
 	int max=1;
+	cout<<"Graph made";
 
 	//ASAP Scheduling
-	/*for(LL i = 0; i < global_count; i++)	//Scheduling the nodes according to ASAP notation.
+	for(LL i = 0; i < global_count; i++)	//Scheduling the nodes according to ASAP notation.
 	{
-		if(arr[i]->pred == NULL)
+		int flag = 0;
+		for(LL j=0;j<100;j++)
+			if(arr[i]->pred[j] != NULL)
+				flag=1;
+		if(flag == 0)
 		{
 			arr[i]->control_step_asap = 1;	//All the nodes with no predecessor are assigned in the First control step.
-			arr[i]->mobility = arr[i]->control_step_asap;	//Assigning the control step value to mobility
-		}			
-		else
-		{
-			if(arr[i]->control_step_asap < (arr[i]->pred->control_step_asap + 1))	//ASAP Scheduling for the nodes which are not present in Control Step 1
-			{
-				arr[i]->control_step_asap = arr[i]->pred->control_step_asap + 1;
-				arr[i]->mobility = arr[i]->control_step_asap;
-				if(max< (arr[i]->control_step_asap))
-					max = arr[i]->control_step_asap;
-			}	
+			arr[i]->mobility = arr[i]->control_step_asap;	//Assigning the control step value to mobility			
 		}
-	}*/
+		else
+			arr[i]->control_step_asap = 99999;
+	}
 
-
+	for(LL i = 0; i < global_count; i++) //ASAP Scheduling for the nodes which are not present in Control Step 1
+	{	int flag=1;
+		for(LL j = 0; j < global_count; j++)
+		{
+			
+			if(arr[j]->control_step_asap == max)
+			{
+				flag=0;
+				for(LL k=0;k<100;k++)
+					if(arr[j]->next[k] != NULL)
+						arr[j]->next[k]->control_step_asap = max + 1;
+			}
+		}
+		if(flag==0)
+			max++;
+	}
+	max--;
+	// for(LL i = 0; i < global_count; i++)
+	// 	cout<<arr[i]->node_number<<" "<<arr[i]->node_name<<" "<<arr[i]->control_step_asap<<endl;
+	cout<<"max "<<max<<endl;
+	
 	//ALAP Scheduling
 	int max1=max;
-	/*for(LL i = 0; i < global_count; i++)	//Scheduling the nodes in the last Control Step
+	for(LL i = 0; i < global_count; i++)	//Scheduling the nodes in the last Control Step
 	{
-		if(arr[i]->next == NULL)
+		int flag=0;
+		for(LL j=0; j<100; j++)
+			if(arr[i]->next[j] != NULL)
+				flag=1;
+		if(flag==0)
 			arr[i]->control_step_alap = max;
 	}
 	for(LL i = 0; i < max; i++)
 	{
 		for(LL j = 0; j < global_count; j++)
 		{
-			if(arr[j]->next != NULL)
-				if(arr[j]->next->control_step_alap == max1)
-					arr[j]->control_step_alap = max1-1;
+			for(LL k=0;k<100;k++)
+			{
+				if(arr[j]->next[k] != NULL)
+				{
+					if(arr[j]->next[k]->control_step_alap == max1)
+						arr[j]->control_step_alap = max1-1;
+					break;
+				}
+			}
 		}
 		max1--;
 	}
+
+	// for(LL i = 0; i < global_count; i++)
+	// 	cout<<arr[i]->node_number<<" "<<arr[i]->node_name<<" "<<arr[i]->control_step_alap<<endl;
 	
 	for(LL i = 0; i < global_count; i++)
 	{	//Calculating the Mobility Value by Subtracting the previously computed ASAP Control Step Value from current ALAP Control Step value.
 		arr[i]->mobility = arr[i]->control_step_alap - arr[i]->control_step_asap;
-		
-	}*/
+	}
 
 	//LIST BASED SCHEDULING
 	/*int mul=MULTIPLIER;
@@ -457,7 +495,7 @@ int main()
 		}
 	}
 	//for(LL i = 0; i < global_count; i++)
-	//	 cout<<arr[i]->node_number<<" "<<(arr[i]->path_value)/* /10000 */<<endl;
+	//	 cout<<arr[i]->node_number<<" "<<(arr[i]->path_value) /10000 <<endl;
 
 
 
@@ -516,7 +554,7 @@ int main()
 	{
 		for(LL j=0;j<global_count_sam;j++)
 		{
-			sam[i][j] = sam[i][j] /* /10000 */;
+			sam[i][j] = sam[i][j] /10000 ;
 			//cout<<sam[i][j]<<"   ";
 		}
 		//cout<<endl;
@@ -563,7 +601,7 @@ int main()
 		}
 	}
 
-
+/*
 	//CLIQUE PARTITION METHOD
 	for(LL i = 0; i< global_count; i++)
 		arr[i]->clique = i+1;
@@ -579,8 +617,8 @@ int main()
 				countcpm++;
 		//cout<<"countcpm"<<countcpm<<endl;
 		int k=0;
-		while(k<countcpm)
-		{
+		//while(k<countcpm)
+		//{
 			DD lowestSwitchingValue=999999;
 			LL lowestSwitchingClique=0;
 			for(LL j = 0; j<global_count; j++)
@@ -595,16 +633,16 @@ int main()
 				}
 			}
 			//cout<<"countcpm"<<countcpm<<endl;
-			k++;
+		//	k++;
 			if(arr[lowestSwitchingClique]->next == arr[i] || arr[i]->next == arr[lowestSwitchingClique])
 				arr[lowestSwitchingClique]->clique = arr[i]->clique;
-		}
+		//}
 	}
 	//PRINTING the clique number of the functional units.
 	for(LL i=0;i<global_count;i++)
-		cout<<arr[i]->node_name<<" -> "<<arr[i]->clique<<endl;
+		cout<<arr[i]->mobility<<" "<<i+1<<" "<<arr[i]->node_name<<" -> "<<arr[i]->clique<<endl;
 
-
+*/
 
 
 	//PRINT
