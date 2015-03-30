@@ -122,7 +122,7 @@ int main()
 
 	//binaryConv(randomgen());
 	ifstream file;	//File Handler
-	file.open("Benchmarks/cosine1.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
+	file.open("Benchmarks/hal.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
 	node *arr[100000];	//node pointer file for all the nodes.
 	char num1[10];
 	char num2[10];
@@ -213,7 +213,7 @@ int main()
 	}
 	file.close();	//Closing the openend file.
 	int max=1;
-	cout<<"Graph made";
+	cout<<"Graph made"<<endl;
 
 	//ASAP Scheduling
 	for(LL i = 0; i < global_count; i++)	//Scheduling the nodes according to ASAP notation.
@@ -250,6 +250,7 @@ int main()
 	max--;
 	// for(LL i = 0; i < global_count; i++)
 	// 	cout<<arr[i]->node_number<<" "<<arr[i]->node_name<<" "<<arr[i]->control_step_asap<<endl;
+	cout<<"ASAP Done"<<endl;
 	cout<<"max "<<max<<endl;
 	
 	//ALAP Scheduling
@@ -287,6 +288,7 @@ int main()
 	{	//Calculating the Mobility Value by Subtracting the previously computed ASAP Control Step Value from current ALAP Control Step value.
 		arr[i]->mobility = arr[i]->control_step_alap - arr[i]->control_step_asap;
 	}
+	cout<<"ALAP Done"<<endl;
 
 	//LIST BASED SCHEDULING
 	/*int mul=MULTIPLIER;
@@ -392,15 +394,19 @@ int main()
 	int index=0;
 	for(LL i = 0; i<global_count;i++)
 	{
-		if(arr[i]->pred == NULL){
+		int flag=0;
+		for(LL j=0; j<100; j++)
+			if(arr[i]->pred[j] != NULL)
+				flag=1;
+		if(flag == 0)
 			total++;
-			inputarray[index][0] = arr[i]->node_number;
-			index++;
-			inputarray[index][0] = arr[i]->node_number;
-			index++;
-		}
+			// inputarray[index][0] = arr[i]->node_number;
+			// index++;
+			// inputarray[index][0] = arr[i]->node_number;
+			// index++;
 	}	//Calculating the input nodes at level 0.
 
+/*
 	LL counter_input[global_count+1]= {0};
 	for(LL i = 0; i<global_count; i++)
 		if(arr[i]->next!=NULL)
@@ -497,7 +503,7 @@ int main()
 	//for(LL i = 0; i < global_count; i++)
 	//	 cout<<arr[i]->node_number<<" "<<(arr[i]->path_value) /10000 <<endl;
 
-
+*/
 
 
 
@@ -511,7 +517,7 @@ int main()
 	DD sam[global_count_sam][global_count_sam];
 	LL lowest = 999999;
 	DD samlowest[global_count_sam][global_count_sam];
-	for(LL x = 0; x < 10000; x++)
+	for(LL x = 0; x < 1000; x++)
 	{	
 		LL sum = 0;
 		DD sam1[global_count_sam][global_count_sam];
@@ -554,22 +560,23 @@ int main()
 	{
 		for(LL j=0;j<global_count_sam;j++)
 		{
-			sam[i][j] = sam[i][j] /10000 ;
+			sam[i][j] = sam[i][j] /100 ;
 			//cout<<sam[i][j]<<"   ";
 		}
 		//cout<<endl;
 	}
+	cout<<"SAM Made"<<endl;
 
-	for(LL i =0; i<total; i++)
-	{
-		for(LL j=0;j<total;j++)
-		{
+	//for(LL i =0; i<total; i++)
+	//{
+	//	for(LL j=0;j<total;j++)
+	//	{
 			//cout<<samlowest[i][j]<<"   ";
-		}
+	//	}
 		//cout<<endl;
-	}
+	//}
 
-	for(LL j =0 ; j<10000; j++)
+	/*for(LL j =0 ; j<10000; j++)
 	{
 		for(LL i = 0; i<global_count; i++)
 		{
@@ -599,16 +606,13 @@ int main()
 			}
 			
 		}
-	}
+	}*/
 
-/*
+
 	//CLIQUE PARTITION METHOD
 	for(LL i = 0; i< global_count; i++)
 		arr[i]->clique = i+1;
-
-	//for(LL i=0;i<global_count;i++)
-		//cout<<arr[i]->node_name<<" -> "<<arr[i]->clique<<endl;
-
+	
 	for(LL i = 0; i<global_count; i++)
 	{
 		int countcpm = 0;
@@ -623,26 +627,84 @@ int main()
 			LL lowestSwitchingClique=0;
 			for(LL j = 0; j<global_count; j++)
 			{
-				if((strcmp(arr[i]->node_name, arr[j]->node_name) == 0) && (arr[i]->clique != arr[j]->clique))
+				for(LL k=0; k<100; k++)
 				{
-					//cout<<i<<" "<<j<<endl;
-					if(sam[i][j] < lowestSwitchingValue) {
-						lowestSwitchingValue = sam[i][j];
-						lowestSwitchingClique = j;
+					if((strcmp(arr[i]->node_name, arr[j]->node_name) == 0) && (arr[i]->clique != arr[j]->clique) && ((arr[j]->next[k] == arr[i]) || (arr[i]->next[k] == arr[j])))
+					{
+						//cout<<i<<" "<<j<<endl;
+						if(sam[i][j] < lowestSwitchingValue) {
+							lowestSwitchingValue = sam[i][j];
+							lowestSwitchingClique = j;
+						}
 					}
+					break;
 				}
 			}
 			//cout<<"countcpm"<<countcpm<<endl;
 		//	k++;
-			if(arr[lowestSwitchingClique]->next == arr[i] || arr[i]->next == arr[lowestSwitchingClique])
-				arr[lowestSwitchingClique]->clique = arr[i]->clique;
+		arr[lowestSwitchingClique]->clique = arr[i]->clique;
 		//}
 	}
 	//PRINTING the clique number of the functional units.
+
+/*
+	for(LL i=0; i<global_count;i++)
+	{
+		int count=0, maxcount=0, maxclique=0;
+		for(LL j=0; j<global_count; j++)
+		{
+			if(strcmp(arr[i]->node_name, arr[j]->node_name) == 0 && arr[i]->clique != arr[j]->clique)
+			{
+				int flag=0, count=0;
+				int minmobility =999;
+				for(LL k=0; k<global_count; k++)
+				{
+					if(arr[k]->clique == arr[i]->clique)
+					{
+						flag=0;
+						for(LL m=0; m<global_count; m++)
+						{
+							if(arr[m]->clique == arr[j]->clique)
+							{
+								if(arr[k]->control_step_asap == (arr[m]->control_step_asap + minmobility)){
+									flag=1;
+									break;}
+							}
+						}
+						if(flag==1)
+						{
+							minmobility=999;
+							for(LL m=0; m<global_count; m++)
+							{
+								if(arr[m]->clique == arr[j]->clique)
+								{
+									if(arr[m]->mobility <minmobility)
+										minmobility = arr[m]->mobility;
+								}
+							}
+						}
+							break;
+						count++;
+					}
+				}
+			
+				if(flag==0)
+				{
+					if(maxcount < count)
+					{
+						maxcount = count;
+						maxclique = j;
+					}
+				}
+			}
+		}
+		for(LL l=0;l<global_count;l++)
+			if(arr[l]->clique == arr[maxclique]->clique)
+				arr[l]->clique = arr[i]->clique;
+	}*/
+
 	for(LL i=0;i<global_count;i++)
 		cout<<arr[i]->mobility<<" "<<i+1<<" "<<arr[i]->node_name<<" -> "<<arr[i]->clique<<endl;
-
-*/
 
 
 	//PRINT
