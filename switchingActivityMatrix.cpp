@@ -1,16 +1,15 @@
 /********************************************/
 /*Program: Graph Reordering in ALAP Form	*
 *		   and Mobility 					*
-* Authors: Harshit Agarwal					*
-*		   Nitish Rai						*
+* Authors: Harshit Agarwal					*						*
 * Version: 3.0								*
 * Description: This program takes a .dot 	*
 * file as input and evaluates the ASAP		*
 * form of the graph mentioned in the file.  *
 * Also takes care of the Switching Activity *
 * Matrix formation. And the path scheduling *
-* hence.
-* The program now 									*
+* hence.									*
+* The program now 							*
 * Structures used: Struct, Pointers, Loops,	*
 * File Handlers, Library Functions.			*/
 /********************************************/
@@ -612,13 +611,13 @@ int main()
 	//CLIQUE PARTITION METHOD
 	for(LL i = 0; i< global_count; i++)
 		arr[i]->clique = i+1;
-	
+
 	for(LL i = 0; i<global_count; i++)
 	{
-		int countcpm = 0;
-		for(LL l = 0; l<global_count; l++)
-			if(strcmp(arr[i]->node_name, arr[l]->node_name) == 0)
-				countcpm++;
+		// int countcpm = 0;
+		// for(LL l = 0; l<global_count; l++)
+		// 	if(strcmp(arr[i]->node_name, arr[l]->node_name) == 0)
+		// 		countcpm++;
 		//cout<<"countcpm"<<countcpm<<endl;
 		int k=0;
 		//while(k<countcpm)
@@ -646,6 +645,83 @@ int main()
 		//}
 	}
 	//PRINTING the clique number of the functional units.
+
+
+	for(LL i=0; i<global_count; i++)
+	{
+		for(LL j=0; j<global_count; j++)
+		{
+			int flag=0;
+			for(LL k=0; k<global_count; k++)
+			{
+				if(arr[i]->clique == arr[k]->clique)
+				{
+					for(LL l=0; l<global_count; l++)
+					{
+						if(arr[j]->clique == arr[l]->clique)
+						{
+							if(arr[k]->control_step_asap == arr[l]->control_step_asap)
+								flag=1;
+						}
+					}
+				}
+			}
+			if(flag == 0)	//No Conflict
+			{
+				for(LL k=0; k<global_count; k++)
+				{
+					if(arr[k]->clique == arr[j]->clique)
+						arr[k]->clique = arr[i]->clique;
+				}
+			}
+			else	//Conflict
+			{
+				LL minmobility = 999;
+				for(LL k=0; k<global_count; k++)
+				{
+					if(arr[k]->clique == arr[j]->clique)
+					{
+						if(arr[k]->mobility < minmobility)
+							minmobility = arr[k]->mobility;
+					}
+				}
+				for(LL k=1; k<=minmobility; k++)
+				{
+					int flag1=0;
+					for(LL l=0; l<global_count; l++)
+					{
+						if(arr[l]->clique == arr[i]->clique)
+						{
+							for(LL m=0; m<global_count; m++)
+							{
+								if(arr[m]->clique == arr[j]->clique)
+								{
+									if(arr[l]->control_step_asap == (arr[m]->control_step_asap + minmobility))
+										flag1=1;
+								}
+							}
+						}
+					}
+					if(flag1 == 0)
+					{
+						for(LL l=0; l<global_count; l++)
+						{
+							if(arr[j]->clique == arr[l]->clique)
+							{
+								arr[l]->control_step_asap = arr[l]->control_step_asap + minmobility;
+								arr[l]->clique = arr[i]->clique;
+							}
+						}
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	for(LL i=0; i<global_count; i++)
+		cout<<arr[i]->node_number<<" "<<arr[i]->clique<<endl;
+
 
 /*
 	for(LL i=0; i<global_count;i++)
@@ -701,10 +777,11 @@ int main()
 		for(LL l=0;l<global_count;l++)
 			if(arr[l]->clique == arr[maxclique]->clique)
 				arr[l]->clique = arr[i]->clique;
-	}*/
+	}
+*/
 
-	for(LL i=0;i<global_count;i++)
-		cout<<arr[i]->mobility<<" "<<i+1<<" "<<arr[i]->node_name<<" -> "<<arr[i]->clique<<endl;
+
+
 
 
 	//PRINT
