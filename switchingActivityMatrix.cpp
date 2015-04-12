@@ -136,7 +136,7 @@ int main()
 			getline(file, line);
 			for(LL i=0; i<line.length(); i++)
 			{
-				if(line[i] == '=' && line[i+1] == ' ')	//Condition for checking and accessing the lines containing the node information of the graphs.
+				if(line[i] == '=' && line[i+1] == ' ' && ((line[i+2]>=65 && line[i+2]<=90) || (line[i+2]>=97 && line[i+2]<=122)))	//Condition for checking and accessing the lines containing the node information of the graphs.
 				{
 					node *vertex = new node();	//Dynamically defining a new node module. Vertex points to it
 					vertex->node_name[0] = line[i+2];
@@ -626,67 +626,68 @@ int main()
 			LL lowestSwitchingClique=0;
 			for(LL j = 0; j<global_count; j++)
 			{
-				for(LL k=0; k<100; k++)
+
+				if((strcmp(arr[i]->node_name, arr[j]->node_name) == 0) && (arr[i]->clique != arr[j]->clique))
 				{
-					if((strcmp(arr[i]->node_name, arr[j]->node_name) == 0) && (arr[i]->clique != arr[j]->clique) && ((arr[j]->next[k] == arr[i]) || (arr[i]->next[k] == arr[j])))
-					{
-						//cout<<i<<" "<<j<<endl;
-						if(sam[i][j] < lowestSwitchingValue) {
-							lowestSwitchingValue = sam[i][j];
-							lowestSwitchingClique = j;
-						}
+					//cout<<i<<" "<<j<<endl;
+					if(sam[i][j] < lowestSwitchingValue) {
+						lowestSwitchingValue = sam[i][j];
+						lowestSwitchingClique = j;
 					}
-					break;
 				}
 			}
 			//cout<<"countcpm"<<countcpm<<endl;
 		//	k++;
-		arr[lowestSwitchingClique]->clique = arr[i]->clique;
+		for(LL k=0; k<100; k++)
+			if((arr[lowestSwitchingClique]->next[k] == arr[i]) || (arr[i]->next[k] == arr[lowestSwitchingClique]))
+				arr[lowestSwitchingClique]->clique = arr[i]->clique;
 		//}
 	}
 	//PRINTING the clique number of the functional units.
+
+
 
 
 	for(LL i=0; i<global_count; i++)
 	{
 		for(LL j=0; j<global_count; j++)
 		{
-			int flag=0;
-			for(LL k=0; k<global_count; k++)
+			if(strcmp(arr[i]->node_name, arr[j]->node_name) == 0)
 			{
-				if(arr[i]->clique == arr[k]->clique)
+				int flag=0;
+				for(LL k=0; k<global_count; k++)
 				{
-					for(LL l=0; l<global_count; l++)
+					if(arr[i]->clique == arr[k]->clique)
 					{
-						if(arr[j]->clique == arr[l]->clique)
+						for(LL l=0; l<global_count; l++)
 						{
-							if(arr[k]->control_step_asap == arr[l]->control_step_asap)
-								flag=1;
+							if(arr[j]->clique == arr[l]->clique)
+							{
+								if(arr[k]->control_step_asap == arr[l]->control_step_asap)
+									flag=1;
+							}
 						}
 					}
 				}
-			}
-			if(flag == 0)	//No Conflict
-			{
-				for(LL k=0; k<global_count; k++)
+				if(flag == 0)	//No Conflict
 				{
-					if(arr[k]->clique == arr[j]->clique)
-						arr[k]->clique = arr[i]->clique;
-				}
-			}
-			else	//Conflict
-			{
-				LL minmobility = 999;
-				for(LL k=0; k<global_count; k++)
-				{
-					if(arr[k]->clique == arr[j]->clique)
+					for(LL k=0; k<global_count; k++)
 					{
-						if(arr[k]->mobility < minmobility)
-							minmobility = arr[k]->mobility;
+						if(arr[k]->clique == arr[j]->clique)
+							arr[k]->clique = arr[i]->clique;
 					}
 				}
-				for(LL k=1; k<=minmobility; k++)
+				else	//Conflict
 				{
+					LL minmobility = 999;
+					for(LL k=0; k<global_count; k++)
+					{
+						if(arr[k]->clique == arr[j]->clique)
+						{
+							if(arr[k]->mobility < minmobility)
+								minmobility = arr[k]->mobility;
+						}
+					}
 					int flag1=0;
 					for(LL l=0; l<global_count; l++)
 					{
@@ -720,8 +721,33 @@ int main()
 	}
 
 	for(LL i=0; i<global_count; i++)
-		cout<<arr[i]->node_number<<" "<<arr[i]->clique<<endl;
+		cout<<arr[i]->node_number<<" "<<arr[i]->clique<<" "<<arr[i]->node_name<<endl;
+	int count=0;
+	int cliqueno=0;
+	for(LL i=0;i<global_count;i++)
+	{
+		if(arr[i]->clique > cliqueno)
+		{
+			count++;
+			cliqueno = arr[i]->clique;
+		}
+	}
+	cout<<"Total Number of Cliques: "<<count<<endl;
+	count=1;
+	for(LL i=0; i<global_count; i++)
+	{
+		cout<<"Clique no. "<<count<<" : ";
+		for(LL j=0;j<global_count;j++)
+		{
+			if(arr[j]->clique == i+1)
+				cout<<arr[j]->node_number<<" , ";
+		}
+		cout<<endl;
+		count++;
+	}
 
+
+/*##########################################################################*/
 
 /*
 	for(LL i=0; i<global_count;i++)
