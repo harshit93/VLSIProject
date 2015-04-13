@@ -122,6 +122,7 @@ int main()
 	//binaryConv(randomgen());
 	ifstream file;	//File Handler
 	file.open("Benchmarks/hal.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
+	cout<<"Hal Benchmark"<<endl;
 	node *arr[100000];	//node pointer file for all the nodes.
 	char num1[10];
 	char num2[10];
@@ -212,7 +213,7 @@ int main()
 	}
 	file.close();	//Closing the openend file.
 	int max=1;
-	cout<<"Graph made"<<endl;
+	cout<<"1. Graph made"<<endl;
 
 	//ASAP Scheduling
 	for(LL i = 0; i < global_count; i++)	//Scheduling the nodes according to ASAP notation.
@@ -249,8 +250,8 @@ int main()
 	max--;
 	// for(LL i = 0; i < global_count; i++)
 	// 	cout<<arr[i]->node_number<<" "<<arr[i]->node_name<<" "<<arr[i]->control_step_asap<<endl;
-	cout<<"ASAP Done"<<endl;
-	cout<<"max "<<max<<endl;
+	cout<<"2. ASAP Done"<<endl;
+	cout<<"No. of Control Steps: "<<max<<endl;
 	
 	//ALAP Scheduling
 	int max1=max;
@@ -287,7 +288,7 @@ int main()
 	{	//Calculating the Mobility Value by Subtracting the previously computed ASAP Control Step Value from current ALAP Control Step value.
 		arr[i]->mobility = arr[i]->control_step_alap - arr[i]->control_step_asap;
 	}
-	cout<<"ALAP Done"<<endl;
+	cout<<"3. ALAP Done"<<endl;
 
 	//LIST BASED SCHEDULING
 	/*int mul=MULTIPLIER;
@@ -564,7 +565,7 @@ int main()
 		}
 		//cout<<endl;
 	}
-	cout<<"SAM Made"<<endl;
+	cout<<"4. Switching Activity Matrix Prepared"<<endl;
 
 	//for(LL i =0; i<total; i++)
 	//{
@@ -720,8 +721,8 @@ int main()
 		}
 	}
 
-	for(LL i=0; i<global_count; i++)
-		cout<<arr[i]->node_number<<" "<<arr[i]->clique<<" "<<arr[i]->node_name<<endl;
+	// for(LL i=0; i<global_count; i++)
+	// 	cout<<arr[i]->node_number<<" "<<arr[i]->clique<<" "<<arr[i]->node_name<<endl;
 	int count=0;
 	int cliqueno=0;
 	for(LL i=0;i<global_count;i++)
