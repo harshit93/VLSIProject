@@ -1,0 +1,204 @@
+smooth_color_z_triangle_dfg__31 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 11
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 11
+Clique no. 1 : (MUL) : 
+Clique no. 2 : (MUL) : 
+Clique no. 3 : (MUL) : 
+Clique no. 4 : (ADD) : 9 , 14 , 16 , 73 , 92 , 
+Clique no. 5 : (LOD) : 10 , 17 , 74 , 93 , 
+Clique no. 6 : (ADD) : 
+Clique no. 7 : (ADD) : 
+Clique no. 8 : (LOD) : 
+Clique no. 9 : (MUL) : 2 , 6 , 7 , 20 , 36 , 39 , 76 , 84 , 87 , 95 , 
+Clique no. 10 : (MUL) : 
+Clique no. 11 : (ADD) : 23 , 28 , 30 , 79 , 98 , 
+Clique no. 12 : (LOD) : 24 , 31 , 80 , 99 , 
+Clique no. 13 : (ADD) : 
+Clique no. 14 : (ADD) : 
+Clique no. 15 : (LOD) : 
+Clique no. 16 : (SUB) : 33 , 83 , 102 , 
+Clique no. 17 : (MUL) : 
+Clique no. 18 : (MUL) : 
+Clique no. 19 : (MUL) : 21 , 40 , 53 , 69 , 82 , 101 , 103 , 187 , 
+Clique no. 20 : (ADD) : 42 , 47 , 49 , 173 , 192 , 
+Clique no. 21 : (LOD) : 43 , 50 , 174 , 193 , 
+Clique no. 22 : (ADD) : 
+Clique no. 23 : (ADD) : 
+Clique no. 24 : (LOD) : 
+Clique no. 25 : (MUL) : 
+Clique no. 26 : (MUL) : 
+Clique no. 27 : (ADD) : 56 , 61 , 63 , 179 , 198 , 
+Clique no. 28 : (LOD) : 57 , 64 , 180 , 199 , 
+Clique no. 29 : (ADD) : 
+Clique no. 30 : (ADD) : 
+Clique no. 31 : (LOD) : 
+Clique no. 32 : (SUB) : 66 , 183 , 202 , 
+Clique no. 33 : (MUL) : 
+Clique no. 34 : (ADD) : 
+Clique no. 35 : (LOD) : 
+Clique no. 36 : (MUL) : 
+Clique no. 37 : (ADD) : 
+Clique no. 38 : (LOD) : 
+Clique no. 39 : (MUL) : 
+Clique no. 40 : (SUB) : 
+Clique no. 41 : (MUL) : 
+Clique no. 42 : (MUL) : 
+Clique no. 43 : (ADD) : 
+Clique no. 44 : (LOD) : 
+Clique no. 45 : (MUL) : 
+Clique no. 46 : (ADD) : 
+Clique no. 47 : (LOD) : 
+Clique no. 48 : (MUL) : 
+Clique no. 49 : (SUB) : 
+Clique no. 50 : (MUL) : 
+Clique no. 51 : (MUL) : 106 , 120 , 121 , 136 , 176 , 184 , 195 , 203 , 
+Clique no. 52 : (MUL) : 
+Clique no. 53 : (ADD) : 109 , 114 , 116 , 273 , 292 , 
+Clique no. 54 : (LOD) : 110 , 117 , 274 , 293 , 
+Clique no. 55 : (ADD) : 
+Clique no. 56 : (ADD) : 
+Clique no. 57 : (LOD) : 
+Clique no. 58 : (MUL) : 
+Clique no. 59 : (MUL) : 
+Clique no. 60 : (ADD) : 123 , 128 , 130 , 279 , 298 , 
+Clique no. 61 : (LOD) : 124 , 131 , 280 , 299 , 
+Clique no. 62 : (ADD) : 
+Clique no. 63 : (ADD) : 
+Clique no. 64 : (LOD) : 
+Clique no. 65 : (SUB) : 133 , 283 , 302 , 
+Clique no. 66 : (MUL) : 
+Clique no. 67 : (MUL) : 54 , 107 , 139 , 169 , 182 , 201 , 284 , 287 , 
+Clique no. 68 : (MUL) : 
+Clique no. 69 : (ADD) : 142 , 147 , 149 , 373 , 392 , 
+Clique no. 70 : (LOD) : 143 , 150 , 374 , 393 , 
+Clique no. 71 : (ADD) : 
+Clique no. 72 : (ADD) : 
+Clique no. 73 : (LOD) : 
+Clique no. 74 : (MUL) : 153 , 206 , 207 , 236 , 276 , 295 , 303 , 387 , 
+Clique no. 75 : (MUL) : 
+Clique no. 76 : (ADD) : 156 , 161 , 163 , 379 , 398 , 
+Clique no. 77 : (LOD) : 157 , 164 , 380 , 399 , 
+Clique no. 78 : (ADD) : 
+Clique no. 79 : (ADD) : 
+Clique no. 80 : (LOD) : 
+Clique no. 81 : (SUB) : 166 , 383 , 402 , 
+Clique no. 82 : (MUL) : 
+Clique no. 83 : (ADD) : 
+Clique no. 84 : (LOD) : 
+Clique no. 85 : (MUL) : 
+Clique no. 86 : (ADD) : 
+Clique no. 87 : (LOD) : 
+Clique no. 88 : (MUL) : 
+Clique no. 89 : (SUB) : 
+Clique no. 90 : (MUL) : 
+Clique no. 91 : (MUL) : 
+Clique no. 92 : (ADD) : 
+Clique no. 93 : (LOD) : 
+Clique no. 94 : (MUL) : 
+Clique no. 95 : (ADD) : 
+Clique no. 96 : (LOD) : 
+Clique no. 97 : (MUL) : 
+Clique no. 98 : (SUB) : 
+Clique no. 99 : (MUL) : 
+Clique no. 100 : (MUL) : 
+Clique no. 101 : (MUL) : 
+Clique no. 102 : (ADD) : 209 , 214 , 216 , 
+Clique no. 103 : (LOD) : 210 , 217 , 
+Clique no. 104 : (ADD) : 
+Clique no. 105 : (ADD) : 
+Clique no. 106 : (LOD) : 
+Clique no. 107 : (MUL) : 140 , 154 , 220 , 269 , 282 , 301 , 403 , 
+Clique no. 108 : (MUL) : 
+Clique no. 109 : (ADD) : 223 , 228 , 230 , 
+Clique no. 110 : (LOD) : 224 , 231 , 
+Clique no. 111 : (ADD) : 
+Clique no. 112 : (ADD) : 
+Clique no. 113 : (LOD) : 
+Clique no. 114 : (SUB) : 233 , 
+Clique no. 115 : (MUL) : 
+Clique no. 116 : (MUL) : 239 , 253 , 254 , 336 , 376 , 384 , 395 , 
+Clique no. 117 : (MUL) : 
+Clique no. 118 : (ADD) : 242 , 247 , 249 , 
+Clique no. 119 : (LOD) : 243 , 250 , 
+Clique no. 120 : (ADD) : 
+Clique no. 121 : (ADD) : 
+Clique no. 122 : (LOD) : 
+Clique no. 123 : (MUL) : 
+Clique no. 124 : (MUL) : 
+Clique no. 125 : (ADD) : 256 , 261 , 263 , 
+Clique no. 126 : (LOD) : 257 , 264 , 
+Clique no. 127 : (ADD) : 
+Clique no. 128 : (ADD) : 
+Clique no. 129 : (LOD) : 
+Clique no. 130 : (SUB) : 266 , 
+Clique no. 131 : (MUL) : 
+Clique no. 132 : (ADD) : 
+Clique no. 133 : (LOD) : 
+Clique no. 134 : (MUL) : 
+Clique no. 135 : (ADD) : 
+Clique no. 136 : (LOD) : 
+Clique no. 137 : (MUL) : 
+Clique no. 138 : (SUB) : 
+Clique no. 139 : (MUL) : 
+Clique no. 140 : (MUL) : 
+Clique no. 141 : (ADD) : 
+Clique no. 142 : (LOD) : 
+Clique no. 143 : (MUL) : 
+Clique no. 144 : (ADD) : 
+Clique no. 145 : (LOD) : 
+Clique no. 146 : (MUL) : 
+Clique no. 147 : (SUB) : 
+Clique no. 148 : (MUL) : 
+Clique no. 149 : (MUL) : 221 , 240 , 306 , 369 , 382 , 401 , 
+Clique no. 150 : (MUL) : 
+Clique no. 151 : (ADD) : 309 , 314 , 316 , 
+Clique no. 152 : (LOD) : 310 , 317 , 
+Clique no. 153 : (ADD) : 
+Clique no. 154 : (ADD) : 
+Clique no. 155 : (LOD) : 
+Clique no. 156 : (MUL) : 320 , 339 , 340 , 
+Clique no. 157 : (MUL) : 
+Clique no. 158 : (ADD) : 323 , 328 , 330 , 
+Clique no. 159 : (LOD) : 324 , 331 , 
+Clique no. 160 : (ADD) : 
+Clique no. 161 : (ADD) : 
+Clique no. 162 : (LOD) : 
+Clique no. 163 : (SUB) : 333 , 
+Clique no. 164 : (MUL) : 
+Clique no. 165 : (MUL) : 
+Clique no. 166 : (MUL) : 
+Clique no. 167 : (ADD) : 342 , 347 , 349 , 
+Clique no. 168 : (LOD) : 343 , 350 , 
+Clique no. 169 : (ADD) : 
+Clique no. 170 : (ADD) : 
+Clique no. 171 : (LOD) : 
+Clique no. 172 : (MUL) : 321 , 353 , 
+Clique no. 173 : (MUL) : 307 , 354 , 
+Clique no. 174 : (ADD) : 356 , 361 , 363 , 
+Clique no. 175 : (LOD) : 357 , 364 , 
+Clique no. 176 : (ADD) : 
+Clique no. 177 : (ADD) : 
+Clique no. 178 : (LOD) : 
+Clique no. 179 : (SUB) : 366 , 
+Clique no. 180 : (MUL) : 
+Clique no. 181 : (ADD) : 
+Clique no. 182 : (LOD) : 
+Clique no. 183 : (MUL) : 
+Clique no. 184 : (ADD) : 
+Clique no. 185 : (LOD) : 
+Clique no. 186 : (MUL) : 
+Clique no. 187 : (SUB) : 
+Clique no. 188 : (MUL) : 
+Clique no. 189 : (MUL) : 
+Clique no. 190 : (ADD) : 
+Clique no. 191 : (LOD) : 
+Clique no. 192 : (MUL) : 
+Clique no. 193 : (ADD) : 
+Clique no. 194 : (LOD) : 
+Clique no. 195 : (MUL) : 
+Clique no. 196 : (SUB) : 
+Clique no. 197 : (MUL) : 

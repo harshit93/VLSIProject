@@ -9,7 +9,8 @@
 * Also takes care of the Switching Activity *
 * Matrix formation. And the path scheduling *
 * hence.									*
-* The program now 							*
+* The program now uses Clique Partitioning	*
+* to bind the nodes.						*
 * Structures used: Struct, Pointers, Loops,	*
 * File Handlers, Library Functions.			*/
 /********************************************/
@@ -51,7 +52,6 @@ LL randomgen()
 {
 	LL num;
 	num=rand() % 1000000 + 1;
-	//cout<<num<<endl;
 	return num;
 }
 
@@ -122,7 +122,7 @@ int main()
 	//binaryConv(randomgen());
 	ifstream file;	//File Handler
 	file.open("Benchmarks/hal.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
-	cout<<"Hal Benchmark"<<endl;
+	cout<<"hal Benchmark"<<endl;
 	node *arr[100000];	//node pointer file for all the nodes.
 	char num1[10];
 	char num2[10];
@@ -248,8 +248,6 @@ int main()
 			max++;
 	}
 	max--;
-	// for(LL i = 0; i < global_count; i++)
-	// 	cout<<arr[i]->node_number<<" "<<arr[i]->node_name<<" "<<arr[i]->control_step_asap<<endl;
 	cout<<"2. ASAP Done"<<endl;
 	cout<<"No. of Control Steps: "<<max<<endl;
 	
@@ -262,7 +260,7 @@ int main()
 			if(arr[i]->next[j] != NULL)
 				flag=1;
 		if(flag==0)
-			arr[i]->control_step_alap = max;
+			arr[i]->control_step_alap = max;	//Setting the maximum value to the nodes in the last control step.
 	}
 	for(LL i = 0; i < max; i++)
 	{
@@ -273,7 +271,7 @@ int main()
 				if(arr[j]->next[k] != NULL)
 				{
 					if(arr[j]->next[k]->control_step_alap == max1)
-						arr[j]->control_step_alap = max1-1;
+						arr[j]->control_step_alap = max1-1;	//Moving up in the graph, marking each node according to the ALAP scheduled values.
 					break;
 				}
 			}
@@ -281,8 +279,6 @@ int main()
 		max1--;
 	}
 
-	// for(LL i = 0; i < global_count; i++)
-	// 	cout<<arr[i]->node_number<<" "<<arr[i]->node_name<<" "<<arr[i]->control_step_alap<<endl;
 	
 	for(LL i = 0; i < global_count; i++)
 	{	//Calculating the Mobility Value by Subtracting the previously computed ASAP Control Step Value from current ALAP Control Step value.
@@ -400,116 +396,7 @@ int main()
 				flag=1;
 		if(flag == 0)
 			total++;
-			// inputarray[index][0] = arr[i]->node_number;
-			// index++;
-			// inputarray[index][0] = arr[i]->node_number;
-			// index++;
 	}	//Calculating the input nodes at level 0.
-
-/*
-	LL counter_input[global_count+1]= {0};
-	for(LL i = 0; i<global_count; i++)
-		if(arr[i]->next!=NULL)
-			counter_input[arr[i]->next->node_number]++;
-	for(LL i = 0; i<global_count+1; i++)
-	{
-		if(counter_input[i]==1) {
-			inputarray[index][0] = i;
-			index++;
-		}
-	}
-	for(LL x = 1; x <= 10000; x++)
-	{
-		for(LL i = 0; i < index; i++)
-			inputarray[i][1] = binaryConv(randomgen());
-		for(LL i = 0; i < global_count; i++)
-			arr[i]->next_value = binaryConv(randomgen());
-		for(LL i = 0; i < global_count; i++)
-		{
-			LL hamming1,hamming2;
-			int flag =0;
-			if(arr[i]->pred == NULL)
-			{
-				for(LL j = 0; j < index; j++)
-				{
-					if(inputarray[j][0] == arr[i]->node_number && flag == 0){
-						hamming1 = hammingDist(inputarray[j][1],arr[i]->next_value);
-						flag=1; }
-					if(inputarray[j][0] == arr[i]->node_number)
-						hamming2 = hammingDist(inputarray[j][1],arr[i]->next_value);
-				}
-				if(hamming1 < hamming2)
-					arr[i]->path_value = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming1 ) / totalflip(arr[i]->next_value);
-				else
-					arr[i]->path_value = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming2 ) / totalflip(arr[i]->next_value);
-				if(arr[i]->next->pred != arr[i])
-				{
-					flag=0;
-					for(LL j = 0; j < index; j++)
-					{
-						if(inputarray[j][0] == arr[i]->next->pred->node_number && flag == 0){
-							hamming1 = hammingDist(inputarray[j][1],arr[i]->next_value);
-							flag=1; }
-						if(inputarray[j][0] == arr[i]->next->pred->node_number)
-							hamming2 = hammingDist(inputarray[j][1],arr[i]->next_value);
-					}
-					DD temp1;
-					if(hamming1 < hamming2)
-						temp1 = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming1 ) / totalflip(arr[i]->next_value);
-					else
-						temp1 = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming2 ) / totalflip(arr[i]->next_value);
-					if(temp1 < arr[i]->path_value)
-						arr[i]->path_value = temp1;
-				}
-			}
-			else
-			{
-				hamming1 = hamming2 = 0;
-				for(LL j = 0; j < index; j++)
-				{
-					if(inputarray[j][0] == arr[i]->node_number)
-					{
-						hamming1 = hammingDist(inputarray[j][1], arr[i]->next_value);
-					}
-				}
-				if(hamming1 == 0)
-				{
-					flag=0;
-					for(LL j = 0; j < global_count; j++)
-					{
-						if(arr[j]->next == arr[i] && flag == 0) {
-							hamming1 = hammingDist(arr[j]->next_value, arr[i]->next_value);
-							flag = 1;
-						}
-						if(arr[j]->next == arr[i])
-							hamming2 = hammingDist(arr[j]->next_value, arr[i]->next_value);
-					}
-				}
-				else
-				{
-					for(LL j = 0; j < global_count; j++)
-					{
-						if(arr[j]->next == arr[i])
-							hamming2 = hammingDist(arr[j]->next_value, arr[i]->next_value);
-					}
-				}
-				if(hamming1 < hamming2)
-					arr[i]->path_value = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming1 ) / totalflip(arr[i]->next_value);
-				else
-					arr[i]->path_value = arr[i]->path_value + (flipCounter(arr[i]->next_value) + hamming2 ) / totalflip(arr[i]->next_value);
-			}
-		}
-	}
-	//for(LL i = 0; i < global_count; i++)
-	//	 cout<<arr[i]->node_number<<" "<<(arr[i]->path_value) /10000 <<endl;
-
-*/
-
-
-
-
-
-	
 
 	LL global_count_sam;	//Number of edges to be calculated at.
 	global_count_sam = global_count + total + total;
@@ -517,17 +404,16 @@ int main()
 	DD sam[global_count_sam][global_count_sam];
 	LL lowest = 999999;
 	DD samlowest[global_count_sam][global_count_sam];
-	for(LL x = 0; x < 1000; x++)
+	for(LL x = 0; x < 10000; x++)	//Iterating the Switching Activity Matrix Formation 10000 times to get the lowest possible matrix.
 	{	
 		LL sum = 0;
 		DD sam1[global_count_sam][global_count_sam];
 		LL inputs[global_count_sam];
 		LL inputbin[global_count_sam];
-		for(LL i=0; i < global_count_sam; i++)
+		for(LL i=0; i < global_count_sam; i++)	//Randomly generating the inputs and converting them into binary.
 		{
 			inputs[i]=randomgen();
 			inputbin[i]=binaryConv(inputs[i]);
-			//cout<<inputs[i]<<endl;
 		}
 		for(LL i = 0 ; i<global_count_sam; i++)
 		{
@@ -540,7 +426,6 @@ int main()
 				}
 				else
 				{
-					//cout<<totalflip(inputs[i])<<endl;
 					sam[i][j] = int(sam[i][j] + ((flipCounter(inputbin[i]) + hammingDist(inputbin[i],inputbin[j])) / totalflip(inputbin[i])));
 					sam1[i][j] = (flipCounter(inputbin[i]) + hammingDist(inputbin[i],inputbin[j])) / totalflip(inputbin[i]);
 					sum = sum + (flipCounter(inputbin[i]) + hammingDist(inputbin[i],inputbin[j])) / totalflip(inputbin[i]);
@@ -561,92 +446,36 @@ int main()
 		for(LL j=0;j<global_count_sam;j++)
 		{
 			sam[i][j] = sam[i][j] /100 ;
-			//cout<<sam[i][j]<<"   ";
 		}
-		//cout<<endl;
 	}
 	cout<<"4. Switching Activity Matrix Prepared"<<endl;
-
-	//for(LL i =0; i<total; i++)
-	//{
-	//	for(LL j=0;j<total;j++)
-	//	{
-			//cout<<samlowest[i][j]<<"   ";
-	//	}
-		//cout<<endl;
-	//}
-
-	/*for(LL j =0 ; j<10000; j++)
-	{
-		for(LL i = 0; i<global_count; i++)
-		{
-			if(arr[i]->pred == NULL){
-				int input1=randomgen();
-				int input2=randomgen();
-				if(arr[i]->node_name == "add")
-					arr[i]->next->weight = arr[i]->next->weight + (input1 + input2);
-				if(arr[i]->node_name == "min")
-					arr[i]->next->weight = arr[i]->next->weight + (abs(input1-input2));
-				if(arr[i]->node_name == "mul")
-					arr[i]->next->weight = arr[i]->next->weight + (input1 * input2);
-				if(arr[i]->node_name == "div")
-					arr[i]->next->weight == arr[i]->next->weight + input1/input2;
-				if(arr[i]->node_name == "exp")
-					arr[i]->next->weight == arr[i]->next->weight + pow(input1,input2);
-				if(arr[i]->node_name == "les")
-					if(input1 < input2)
-						arr[i]->next->weight = arr[i]->next->weight + 1;
-				else
-					arr[i]->next->weight = arr[i]->next->weight + 0;
-				if(arr[i]->node_name == "grt")
-					if(input1 > input2)
-						arr[i]->next->weight = arr[i]->next->weight + 1;
-					else
-						arr[i]->next->weight = arr[i]->next->weight + 0;
-			}
-			
-		}
-	}*/
 
 
 	//CLIQUE PARTITION METHOD
 	for(LL i = 0; i< global_count; i++)
-		arr[i]->clique = i+1;
+		arr[i]->clique = i+1;	//Assigning different clique numbers to all the nodes.
 
 	for(LL i = 0; i<global_count; i++)
 	{
-		// int countcpm = 0;
-		// for(LL l = 0; l<global_count; l++)
-		// 	if(strcmp(arr[i]->node_name, arr[l]->node_name) == 0)
-		// 		countcpm++;
-		//cout<<"countcpm"<<countcpm<<endl;
 		int k=0;
-		//while(k<countcpm)
-		//{
 			DD lowestSwitchingValue=999999;
 			LL lowestSwitchingClique=0;
 			for(LL j = 0; j<global_count; j++)
 			{
 
-				if((strcmp(arr[i]->node_name, arr[j]->node_name) == 0) && (arr[i]->clique != arr[j]->clique))
+				if((strcmp(arr[i]->node_name, arr[j]->node_name) == 0) && (arr[i]->clique != arr[j]->clique))	//Finding the node pair with lowest switching activity based on a particular node type.
 				{
-					//cout<<i<<" "<<j<<endl;
 					if(sam[i][j] < lowestSwitchingValue) {
 						lowestSwitchingValue = sam[i][j];
 						lowestSwitchingClique = j;
 					}
 				}
 			}
-			//cout<<"countcpm"<<countcpm<<endl;
-		//	k++;
 		for(LL k=0; k<100; k++)
 			if((arr[lowestSwitchingClique]->next[k] == arr[i]) || (arr[i]->next[k] == arr[lowestSwitchingClique]))
 				arr[lowestSwitchingClique]->clique = arr[i]->clique;
-		//}
 	}
 	//PRINTING the clique number of the functional units.
-
-
 
 
 	for(LL i=0; i<global_count; i++)
@@ -662,7 +491,7 @@ int main()
 					{
 						for(LL l=0; l<global_count; l++)
 						{
-							if(arr[j]->clique == arr[l]->clique)
+							if(arr[j]->clique == arr[l]->clique)	//Comparing two cliques for nodes having conflicting control step values.
 							{
 								if(arr[k]->control_step_asap == arr[l]->control_step_asap)
 									flag=1;
@@ -681,7 +510,7 @@ int main()
 				else	//Conflict
 				{
 					LL minmobility = 999;
-					for(LL k=0; k<global_count; k++)
+					for(LL k=0; k<global_count; k++)	//Minimum mobility of the clique calculated by which it would be shifted.
 					{
 						if(arr[k]->clique == arr[j]->clique)
 						{
@@ -689,40 +518,45 @@ int main()
 								minmobility = arr[k]->mobility;
 						}
 					}
-					int flag1=0;
-					for(LL l=0; l<global_count; l++)
+					
+					if(minmobility > 0)
 					{
-						if(arr[l]->clique == arr[i]->clique)
+						for(LL n =1; n <= minmobility; n++)
 						{
-							for(LL m=0; m<global_count; m++)
+							int flag1=0;
+							for(LL l=0; l<global_count; l++)
 							{
-								if(arr[m]->clique == arr[j]->clique)
+								if(arr[l]->clique == arr[i]->clique)
 								{
-									if(arr[l]->control_step_asap == (arr[m]->control_step_asap + minmobility))
-										flag1=1;
+									for(LL m=0; m<global_count; m++)
+									{
+										if(arr[m]->clique == arr[j]->clique)
+										{
+											if(arr[l]->control_step_asap == (arr[m]->control_step_asap + minmobility))
+												flag1=1;
+										}
+									}
 								}
 							}
-						}
-					}
-					if(flag1 == 0)
-					{
-						for(LL l=0; l<global_count; l++)
-						{
-							if(arr[j]->clique == arr[l]->clique)
+							if(flag1 == 0)
 							{
-								arr[l]->control_step_asap = arr[l]->control_step_asap + minmobility;
-								arr[l]->clique = arr[i]->clique;
+								for(LL l=0; l<global_count; l++)
+								{
+									if(arr[j]->clique == arr[l]->clique)	//Changing the control step values of one clique according to the minimum clique mobility value found.
+									{
+										arr[l]->control_step_asap = arr[l]->control_step_asap + minmobility;
+										arr[l]->clique = arr[i]->clique;
+									}
+								}
+								break;
 							}
 						}
-						break;
 					}
 				}
 			}
 		}
 	}
 
-	// for(LL i=0; i<global_count; i++)
-	// 	cout<<arr[i]->node_number<<" "<<arr[i]->clique<<" "<<arr[i]->node_name<<endl;
 	int count=0;
 	int cliqueno=0;
 	for(LL i=0;i<global_count;i++)
@@ -733,121 +567,22 @@ int main()
 			cliqueno = arr[i]->clique;
 		}
 	}
-	cout<<"Total Number of Cliques: "<<count<<endl;
+	cout<<"Total Number of Cliques: "<<count<<endl;	//Printing the cliques.
 	count=1;
 	for(LL i=0; i<global_count; i++)
 	{
-		cout<<"Clique no. "<<count<<" : ";
+		cout<<"Clique no. "<<count<<" : ("<<arr[i]->node_name<<") : ";
 		for(LL j=0;j<global_count;j++)
 		{
 			if(arr[j]->clique == i+1)
-				cout<<arr[j]->node_number<<" , ";
+				cout<<arr[j]->node_number<<"("<<arr[i]->control_step_asap<<") , ";
 		}
 		cout<<endl;
 		count++;
 	}
 
-
-/*##########################################################################*/
-
-/*
-	for(LL i=0; i<global_count;i++)
-	{
-		int count=0, maxcount=0, maxclique=0;
-		for(LL j=0; j<global_count; j++)
-		{
-			if(strcmp(arr[i]->node_name, arr[j]->node_name) == 0 && arr[i]->clique != arr[j]->clique)
-			{
-				int flag=0, count=0;
-				int minmobility =999;
-				for(LL k=0; k<global_count; k++)
-				{
-					if(arr[k]->clique == arr[i]->clique)
-					{
-						flag=0;
-						for(LL m=0; m<global_count; m++)
-						{
-							if(arr[m]->clique == arr[j]->clique)
-							{
-								if(arr[k]->control_step_asap == (arr[m]->control_step_asap + minmobility)){
-									flag=1;
-									break;}
-							}
-						}
-						if(flag==1)
-						{
-							minmobility=999;
-							for(LL m=0; m<global_count; m++)
-							{
-								if(arr[m]->clique == arr[j]->clique)
-								{
-									if(arr[m]->mobility <minmobility)
-										minmobility = arr[m]->mobility;
-								}
-							}
-						}
-							break;
-						count++;
-					}
-				}
-			
-				if(flag==0)
-				{
-					if(maxcount < count)
-					{
-						maxcount = count;
-						maxclique = j;
-					}
-				}
-			}
-		}
-		for(LL l=0;l<global_count;l++)
-			if(arr[l]->clique == arr[maxclique]->clique)
-				arr[l]->clique = arr[i]->clique;
-	}
-*/
-
-
-
-
-
-	//PRINT
-	/*
-	int count=0;
-	for(LL i = 1; i < global_count; i++)	//Printing the Scheduled graph.
-	{
-		cout<<"For Control Step: "<<i<<endl;
-		for(LL j = 0; j< global_count; j++)
-		{
-			if(arr[j]->control_step == i)
-			{
-				if(arr[j]->next != NULL)
-				{
-					cout<<arr[j]->node_number<<" "<<arr[j]->node_name<<" <"<<arr[j]->mobility<<"> "<<" -> "<<arr[j]->next->node_number<<" "<<arr[j]->next->node_name<<endl;
-					count++;
-				}
-				else
-				{
-					cout<<arr[j]->node_number<<" "<<arr[j]->node_name<<" <"<<arr[j]->mobility<<"> "<<endl;
-					count++;
-				}
-			}
-		}
-		cout<<endl;
-		cout<<count<<endl;
-		if(count == global_count)
-			break;
-	}*/
-	//for(LL i = 0; i < global_count; i++)
-	//	cout<<arr[i]->node_number<<" "<<arr[i]->mobility<<endl;
 		for(LL i=0; i<global_count; i++) {
-			free(arr[i]);
-		//	free(sam[i]);
-			//free(sam1[i]);
-			//free(inputs[i]);
-			//free(inputbin[i]);
-		//	free(samlowest[i]);
+			free(arr[i]);	//Freeing memory for multiple instance run of the program.
 		}
-		//free(global_count);
 	return 0;
 }

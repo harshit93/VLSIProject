@@ -1,0 +1,113 @@
+write_bmp_header_dfg__7 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 7
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 3
+Clique no. 1 : (MUL) : 
+Clique no. 2 : (ADD) : 
+Clique no. 3 : (ADD) : 
+Clique no. 4 : (LOD) : 
+Clique no. 5 : (ADD) : 145 , 
+Clique no. 6 : (LOD) : 9 , 161 , 176 , 278 , 
+Clique no. 7 : (MUL) : 3 , 17 , 
+Clique no. 8 : (ADD) : 
+Clique no. 9 : (ADD) : 
+Clique no. 10 : (STR) : 
+Clique no. 11 : (ADD) : 
+Clique no. 12 : (STR) : 37 , 43 , 51 , 89 , 99 , 275 , 
+Clique no. 13 : (AND) : 
+Clique no. 14 : (ADD) : 
+Clique no. 15 : (STR) : 
+Clique no. 16 : (ASR) : 53 , 91 , 267 , 
+Clique no. 17 : (AND) : 
+Clique no. 18 : (ADD) : 
+Clique no. 19 : (STR) : 61 , 109 , 125 , 143 , 
+Clique no. 20 : (ASR) : 63 , 101 , 
+Clique no. 21 : (AND) : 45 , 65 , 83 , 93 , 152 , 182 , 259 , 269 , 
+Clique no. 22 : (ADD) : 
+Clique no. 23 : (STR) : 71 , 119 , 131 , 200 , 
+Clique no. 24 : (ASR) : 73 , 111 , 
+Clique no. 25 : (AND) : 55 , 75 , 103 , 113 , 137 , 
+Clique no. 26 : (ADD) : 
+Clique no. 27 : (STR) : 81 , 158 , 215 , 251 , 
+Clique no. 28 : (AND) : 
+Clique no. 29 : (ADD) : 8 , 18 , 42 , 50 , 88 , 
+Clique no. 30 : (STR) : 
+Clique no. 31 : (ASR) : 
+Clique no. 32 : (AND) : 
+Clique no. 33 : (ADD) : 
+Clique no. 34 : (STR) : 
+Clique no. 35 : (ASR) : 
+Clique no. 36 : (AND) : 
+Clique no. 37 : (ADD) : 108 , 
+Clique no. 38 : (STR) : 
+Clique no. 39 : (ASR) : 
+Clique no. 40 : (AND) : 
+Clique no. 41 : (ADD) : 118 , 
+Clique no. 42 : (STR) : 
+Clique no. 43 : (ADD) : 124 , 
+Clique no. 44 : (STR) : 
+Clique no. 45 : (ADD) : 130 , 
+Clique no. 46 : (STR) : 
+Clique no. 47 : (ADD) : 133 , 
+Clique no. 48 : (LOD) : 
+Clique no. 49 : (AND) : 
+Clique no. 50 : (ADD) : 13 , 36 , 142 , 
+Clique no. 51 : (STR) : 
+Clique no. 52 : (ADD) : 
+Clique no. 53 : (LOD) : 
+Clique no. 54 : (LSR) : 
+Clique no. 55 : (AND) : 
+Clique no. 56 : (ADD) : 98 , 157 , 
+Clique no. 57 : (STR) : 
+Clique no. 58 : (ADD) : 160 , 
+Clique no. 59 : (LOD) : 
+Clique no. 60 : (LSR) : 
+Clique no. 61 : (AND) : 
+Clique no. 62 : (ADD) : 172 , 
+Clique no. 63 : (STR) : 
+Clique no. 64 : (ADD) : 175 , 
+Clique no. 65 : (LOD) : 
+Clique no. 66 : (LSR) : 180 , 
+Clique no. 67 : (AND) : 
+Clique no. 68 : (ADD) : 187 , 
+Clique no. 69 : (STR) : 
+Clique no. 70 : (ADD) : 190 , 
+Clique no. 71 : (LOD) : 14 , 134 , 191 , 
+Clique no. 72 : (AND) : 
+Clique no. 73 : (ADD) : 199 , 
+Clique no. 74 : (STR) : 
+Clique no. 75 : (ADD) : 202 , 
+Clique no. 76 : (LOD) : 203 , 
+Clique no. 77 : (LSR) : 207 , 
+Clique no. 78 : (AND) : 209 , 
+Clique no. 79 : (ADD) : 214 , 
+Clique no. 80 : (STR) : 
+Clique no. 81 : (ADD) : 217 , 
+Clique no. 82 : (LOD) : 218 , 
+Clique no. 83 : (LSR) : 165 , 222 , 
+Clique no. 84 : (AND) : 167 , 194 , 224 , 
+Clique no. 85 : (ADD) : 229 , 
+Clique no. 86 : (STR) : 230 , 
+Clique no. 87 : (ADD) : 232 , 
+Clique no. 88 : (LOD) : 146 , 233 , 
+Clique no. 89 : (LSR) : 150 , 237 , 
+Clique no. 90 : (AND) : 239 , 
+Clique no. 91 : (ADD) : 70 , 80 , 244 , 
+Clique no. 92 : (STR) : 173 , 188 , 245 , 257 , 
+Clique no. 93 : (ADD) : 250 , 
+Clique no. 94 : (STR) : 
+Clique no. 95 : (ADD) : 256 , 
+Clique no. 96 : (STR) : 
+Clique no. 97 : (AND) : 
+Clique no. 98 : (ADD) : 264 , 
+Clique no. 99 : (STR) : 265 , 
+Clique no. 100 : (ASR) : 
+Clique no. 101 : (AND) : 
+Clique no. 102 : (ADD) : 274 , 
+Clique no. 103 : (STR) : 
+Clique no. 104 : (ADD) : 4 , 60 , 277 , 
+Clique no. 105 : (LOD) : 
+Clique no. 106 : (BNE) : 282 , 

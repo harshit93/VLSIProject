@@ -1,0 +1,63 @@
+collapse_pyr_dfg__113 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 7
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 7
+Clique no. 1 : (MUL) : 
+Clique no. 2 : (ADD) : 
+Clique no. 3 : (LOD) : 
+Clique no. 4 : (ADD) : 
+Clique no. 5 : (STR) : 
+Clique no. 6 : (ASR) : 11 , 52 , 
+Clique no. 7 : (SUB) : 
+Clique no. 8 : (MUL) : 
+Clique no. 9 : (ADD) : 
+Clique no. 10 : (LOD) : 
+Clique no. 11 : (SUB) : 
+Clique no. 12 : (STR) : 
+Clique no. 13 : (ADD) : 3 , 7 , 19 , 27 , 31 , 44 , 68 , 
+Clique no. 14 : (MUL) : 
+Clique no. 15 : (ADD) : 
+Clique no. 16 : (LOD) : 
+Clique no. 17 : (SUB) : 23 , 35 , 38 , 48 , 56 , 
+Clique no. 18 : (STR) : 
+Clique no. 19 : (SUB) : 
+Clique no. 20 : (MUL) : 
+Clique no. 21 : (ADD) : 
+Clique no. 22 : (LOD) : 
+Clique no. 23 : (SUB) : 
+Clique no. 24 : (STR) : 
+Clique no. 25 : (ASR) : 
+Clique no. 26 : (SUB) : 
+Clique no. 27 : (MUL) : 57 , 
+Clique no. 28 : (ADD) : 60 , 64 , 79 , 85 , 107 , 
+Clique no. 29 : (LOD) : 62 , 
+Clique no. 30 : (ADD) : 
+Clique no. 31 : (STR) : 66 , 
+Clique no. 32 : (ADD) : 
+Clique no. 33 : (MUL) : 69 , 
+Clique no. 34 : (ADD) : 72 , 76 , 
+Clique no. 35 : (LOD) : 74 , 
+Clique no. 36 : (ADD) : 
+Clique no. 37 : (STR) : 78 , 
+Clique no. 38 : (ADD) : 
+Clique no. 39 : (MUL) : 0 , 16 , 28 , 82 , 
+Clique no. 40 : (ADD) : 
+Clique no. 41 : (LOD) : 5 , 21 , 33 , 87 , 
+Clique no. 42 : (LSL) : 90 , 
+Clique no. 43 : (SUB) : 
+Clique no. 44 : (STR) : 9 , 25 , 37 , 93 , 
+Clique no. 45 : (SUB) : 15 , 91 , 95 , 
+Clique no. 46 : (MUL) : 96 , 
+Clique no. 47 : (ADD) : 99 , 103 , 
+Clique no. 48 : (LOD) : 101 , 
+Clique no. 49 : (ADD) : 
+Clique no. 50 : (STR) : 105 , 
+Clique no. 51 : (ADD) : 
+Clique no. 52 : (MUL) : 41 , 108 , 
+Clique no. 53 : (ADD) : 111 , 115 , 
+Clique no. 54 : (LOD) : 46 , 113 , 
+Clique no. 55 : (ADD) : 
+Clique no. 56 : (STR) : 50 , 117 , 

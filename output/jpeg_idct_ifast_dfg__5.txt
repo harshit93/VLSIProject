@@ -1,0 +1,129 @@
+jpeg_idct_ifast_dfg__5 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 122
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 2
+Clique no. 1 : (MUL) : 
+Clique no. 2 : (ADD) : 
+Clique no. 3 : (LOD) : 
+Clique no. 4 : (MUL) : 
+Clique no. 5 : (ADD) : 
+Clique no. 6 : (LOD) : 
+Clique no. 7 : (MUL) : 
+Clique no. 8 : (MUL) : 
+Clique no. 9 : (ADD) : 
+Clique no. 10 : (LOD) : 
+Clique no. 11 : (MUL) : 
+Clique no. 12 : (ADD) : 
+Clique no. 13 : (LOD) : 
+Clique no. 14 : (MUL) : 
+Clique no. 15 : (MUL) : 335 , 365 , 445 , 505 , 101 , 
+Clique no. 16 : (ADD) : 
+Clique no. 17 : (LOD) : 
+Clique no. 18 : (MUL) : 
+Clique no. 19 : (ADD) : 
+Clique no. 20 : (LOD) : 485 , 
+Clique no. 21 : (MUL) : 
+Clique no. 22 : (MUL) : 
+Clique no. 23 : (ADD) : 
+Clique no. 24 : (LOD) : 575 , 655 , 105 , 114 , 
+Clique no. 25 : (MUL) : 
+Clique no. 26 : (ADD) : 
+Clique no. 27 : (LOD) : 
+Clique no. 28 : (MUL) : 
+Clique no. 29 : (ADD) : 
+Clique no. 30 : (SUB) : 
+Clique no. 31 : (ADD) : 
+Clique no. 32 : (SUB) : 
+Clique no. 33 : (MUL) : 110 , 118 , 124 , 141 , 144 , 173 , 181 , 188 , 196 , 210 , 217 , 224 , 
+Clique no. 34 : (ASR) : 
+Clique no. 35 : (SUB) : 
+Clique no. 36 : (ADD) : 
+Clique no. 37 : (SUB) : 
+Clique no. 38 : (ADD) : 
+Clique no. 39 : (SUB) : 905 , 162 , 166 , 170 , 192 , 202 , 204 , 
+Clique no. 40 : (MUL) : 
+Clique no. 41 : (ADD) : 
+Clique no. 42 : (LOD) : 975 , 
+Clique no. 43 : (MUL) : 
+Clique no. 44 : (ADD) : 
+Clique no. 45 : (LOD) : 
+Clique no. 46 : (MUL) : 
+Clique no. 47 : (MUL) : 
+Clique no. 48 : (ADD) : 
+Clique no. 49 : (LOD) : 
+Clique no. 50 : (MUL) : 
+Clique no. 51 : (ADD) : 
+Clique no. 52 : (LOD) : 
+Clique no. 53 : (MUL) : 
+Clique no. 54 : (MUL) : 
+Clique no. 55 : (ADD) : 
+Clique no. 56 : (LOD) : 
+Clique no. 57 : (MUL) : 
+Clique no. 58 : (ADD) : 
+Clique no. 59 : (LOD) : 139 , 
+Clique no. 60 : (MUL) : 
+Clique no. 61 : (MUL) : 
+Clique no. 62 : (ADD) : 
+Clique no. 63 : (LOD) : 148 , 
+Clique no. 64 : (MUL) : 127 , 135 , 152 , 
+Clique no. 65 : (ADD) : 155 , 
+Clique no. 66 : (LOD) : 6 , 145 , 235 , 315 , 405 , 122 , 131 , 156 , 
+Clique no. 67 : (MUL) : 158 , 
+Clique no. 68 : (ADD) : 
+Clique no. 69 : (SUB) : 
+Clique no. 70 : (ADD) : 
+Clique no. 71 : (SUB) : 
+Clique no. 72 : (ADD) : 
+Clique no. 73 : (SUB) : 
+Clique no. 74 : (MUL) : 
+Clique no. 75 : (ASR) : 
+Clique no. 76 : (ADD) : 
+Clique no. 77 : (MUL) : 
+Clique no. 78 : (ASR) : 805 , 175 , 183 , 190 , 198 , 
+Clique no. 79 : (MUL) : 
+Clique no. 80 : (ASR) : 
+Clique no. 81 : (SUB) : 
+Clique no. 82 : (MUL) : 
+Clique no. 83 : (ASR) : 
+Clique no. 84 : (ADD) : 
+Clique no. 85 : (SUB) : 
+Clique no. 86 : (SUB) : 
+Clique no. 87 : (ADD) : 
+Clique no. 88 : (ADD) : 
+Clique no. 89 : (MUL) : 
+Clique no. 90 : (ADD) : 
+Clique no. 91 : (STR) : 
+Clique no. 92 : (SUB) : 
+Clique no. 93 : (MUL) : 
+Clique no. 94 : (ADD) : 
+Clique no. 95 : (STR) : 
+Clique no. 96 : (ADD) : 
+Clique no. 97 : (MUL) : 
+Clique no. 98 : (ADD) : 227 , 
+Clique no. 99 : (STR) : 
+Clique no. 100 : (SUB) : 
+Clique no. 101 : (MUL) : 231 , 
+Clique no. 102 : (ADD) : 234 , 
+Clique no. 103 : (STR) : 235 , 
+Clique no. 104 : (ADD) : 236 , 
+Clique no. 105 : (MUL) : 238 , 
+Clique no. 106 : (ADD) : 241 , 
+Clique no. 107 : (STR) : 242 , 
+Clique no. 108 : (SUB) : 243 , 
+Clique no. 109 : (MUL) : 245 , 
+Clique no. 110 : (ADD) : 248 , 
+Clique no. 111 : (STR) : 249 , 
+Clique no. 112 : (ADD) : 250 , 
+Clique no. 113 : (MUL) : 252 , 
+Clique no. 114 : (ADD) : 255 , 
+Clique no. 115 : (STR) : 256 , 
+Clique no. 116 : (SUB) : 715 , 755 , 825 , 865 , 215 , 229 , 257 , 
+Clique no. 117 : (MUL) : 2 , 105 , 165 , 195 , 275 , 535 , 615 , 675 , 785 , 935 , 107 , 259 , 
+Clique no. 118 : (ADD) : 262 , 
+Clique no. 119 : (STR) : 214 , 221 , 228 , 263 , 
+Clique no. 120 : (ADD) : 266 , 
+Clique no. 121 : (ADD) : 270 , 
+Clique no. 122 : (ADD) : 5 , 135 , 225 , 305 , 395 , 475 , 565 , 645 , 695 , 735 , 845 , 885 , 965 , 104 , 113 , 121 , 130 , 138 , 147 , 160 , 164 , 168 , 178 , 200 , 206 , 208 , 213 , 220 , 222 , 274 , 

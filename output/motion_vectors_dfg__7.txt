@@ -1,0 +1,39 @@
+motion_vectors_dfg__7 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 6
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 6
+Clique no. 1 : (MUL) : 
+Clique no. 2 : (MUL) : 
+Clique no. 3 : (ADD) : 
+Clique no. 4 : (ADD) : 
+Clique no. 5 : (MUL) : 
+Clique no. 6 : (MUL) : 
+Clique no. 7 : (MUL) : 1 , 3 , 12 , 13 , 15 , 27 , 
+Clique no. 8 : (ADD) : 6 , 8 , 18 , 20 , 22 , 36 , 
+Clique no. 9 : (ADD) : 
+Clique no. 10 : (ADD) : 
+Clique no. 11 : (LOD) : 23 , 
+Clique no. 12 : (MUL) : 
+Clique no. 13 : (MUL) : 
+Clique no. 14 : (MUL) : 
+Clique no. 15 : (ADD) : 
+Clique no. 16 : (ADD) : 32 , 34 , 49 , 63 , 
+Clique no. 17 : (ADD) : 
+Clique no. 18 : (STR) : 37 , 
+Clique no. 19 : (MUL) : 39 , 40 , 53 , 
+Clique no. 20 : (MUL) : 
+Clique no. 21 : (MUL) : 42 , 
+Clique no. 22 : (ADD) : 45 , 47 , 
+Clique no. 23 : (ADD) : 
+Clique no. 24 : (ADD) : 
+Clique no. 25 : (LOD) : 50 , 
+Clique no. 26 : (MUL) : 
+Clique no. 27 : (MUL) : 54 , 
+Clique no. 28 : (MUL) : 26 , 29 , 56 , 
+Clique no. 29 : (ADD) : 59 , 61 , 
+Clique no. 30 : (ADD) : 
+Clique no. 31 : (ADD) : 
+Clique no. 32 : (STR) : 64 , 

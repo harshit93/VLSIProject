@@ -1,0 +1,16 @@
+iir2 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 4
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 2
+Clique no. 1 : (mul) : 
+Clique no. 2 : (mul) : 
+Clique no. 3 : (mul) : 3 , 
+Clique no. 4 : (mul) : 4 , 
+Clique no. 5 : (mul) : 1 , 2 , 5 , 
+Clique no. 6 : (add) : 
+Clique no. 7 : (add) : 7 , 
+Clique no. 8 : (add) : 6 , 8 , 9 , 
+Clique no. 9 : (add) : 

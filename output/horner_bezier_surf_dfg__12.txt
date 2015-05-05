@@ -1,0 +1,25 @@
+horner_bezier_surf_dfg__12 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 8
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 5
+Clique no. 1 : (MUL) : 0 , 2 , 8 , 10 , 17 , 
+Clique no. 2 : (ADD) : 1 , 5 , 14 , 18 , 20 , 24 , 29 , 
+Clique no. 3 : (MUL) : 
+Clique no. 4 : (ADD) : 
+Clique no. 5 : (LOD) : 6 , 15 , 
+Clique no. 6 : (MUL) : 
+Clique no. 7 : (MUL) : 
+Clique no. 8 : (MUL) : 
+Clique no. 9 : (ADD) : 
+Clique no. 10 : (LOD) : 
+Clique no. 11 : (MUL) : 
+Clique no. 12 : (ADD) : 
+Clique no. 13 : (MUL) : 11 , 19 , 21 , 
+Clique no. 14 : (ADD) : 
+Clique no. 15 : (MUL) : 
+Clique no. 16 : (ADD) : 
+Clique no. 17 : (STR) : 25 , 
+Clique no. 18 : (ADD) : 

@@ -1,0 +1,21 @@
+digraph iir {
+    node [fontcolor=white,style=filled,color="160,60,176"];
+    1 [label = mul];
+    2 [label = mul];
+    3 [label = mul];
+    4 [label = mul];
+    5 [label = mul];
+    6 [label = add];
+    7 [label = add];
+    8 [label = add];
+    9 [label = add];
+    1 -> 6 [name=16];
+    2 -> 6 [name=14];
+    3 -> 7 [name=20];
+    4 -> 7 [name=24];
+    7 -> 8 [name=19];
+    8 -> 9 [name=25];
+    5 -> 8 [name=17];
+    6 -> 9 [name=22];
+  
+}

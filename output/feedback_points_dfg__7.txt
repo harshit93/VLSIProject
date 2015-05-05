@@ -1,0 +1,60 @@
+feedback_points_dfg__7 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 7
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 7
+Clique no. 1 : (MUL) : 
+Clique no. 2 : (MUL) : 3 , 4 , 16 , 26 , 28 , 70 , 
+Clique no. 3 : (ADD) : 6 , 8 , 10 , 23 , 31 , 77 , 
+Clique no. 4 : (ADD) : 
+Clique no. 5 : (ADD) : 
+Clique no. 6 : (LOD) : 11 , 24 , 78 , 
+Clique no. 7 : (DIV) : 13 , 
+Clique no. 8 : (MUL) : 
+Clique no. 9 : (MUL) : 
+Clique no. 10 : (ADD) : 
+Clique no. 11 : (ADD) : 
+Clique no. 12 : (ADD) : 
+Clique no. 13 : (LOD) : 
+Clique no. 14 : (MUL) : 
+Clique no. 15 : (MUL) : 
+Clique no. 16 : (ADD) : 
+Clique no. 17 : (STR) : 32 , 85 , 
+Clique no. 18 : (MUL) : 17 , 34 , 35 , 44 , 46 , 64 , 
+Clique no. 19 : (MUL) : 
+Clique no. 20 : (ADD) : 
+Clique no. 21 : (ADD) : 
+Clique no. 22 : (ADD) : 
+Clique no. 23 : (LOD) : 
+Clique no. 24 : (MUL) : 
+Clique no. 25 : (MUL) : 
+Clique no. 26 : (ADD) : 39 , 41 , 49 , 55 , 67 , 
+Clique no. 27 : (STR) : 50 , 
+Clique no. 28 : (MUL) : 
+Clique no. 29 : (MUL) : 
+Clique no. 30 : (ADD) : 
+Clique no. 31 : (ADD) : 
+Clique no. 32 : (ADD) : 
+Clique no. 33 : (LOD) : 42 , 60 , 90 , 96 , 
+Clique no. 34 : (MUL) : 52 , 53 , 62 , 71 , 81 , 
+Clique no. 35 : (MUL) : 
+Clique no. 36 : (ADD) : 
+Clique no. 37 : (STR) : 68 , 
+Clique no. 38 : (MUL) : 
+Clique no. 39 : (MUL) : 
+Clique no. 40 : (ADD) : 73 , 
+Clique no. 41 : (ADD) : 75 , 
+Clique no. 42 : (ADD) : 
+Clique no. 43 : (LOD) : 
+Clique no. 44 : (MUL) : 
+Clique no. 45 : (ADD) : 84 , 
+Clique no. 46 : (STR) : 
+Clique no. 47 : (ADD) : 87 , 
+Clique no. 48 : (ADD) : 89 , 
+Clique no. 49 : (LOD) : 
+Clique no. 50 : (ADD) : 21 , 37 , 57 , 59 , 93 , 
+Clique no. 51 : (ADD) : 19 , 95 , 
+Clique no. 52 : (LOD) : 
+Clique no. 53 : (BGE) : 98 , 

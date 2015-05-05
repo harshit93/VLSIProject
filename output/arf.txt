@@ -1,0 +1,35 @@
+arf Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 8
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 11
+Clique no. 1 : (MUL) : 
+Clique no. 2 : (MUL) : 1 , 2 , 15 , 
+Clique no. 3 : (MUL) : 3 , 7 , 18 , 
+Clique no. 4 : (MUL) : 4 , 8 , 
+Clique no. 5 : (MUL) : 5 , 16 , 21 , 
+Clique no. 6 : (MUL) : 6 , 17 , 22 , 
+Clique no. 7 : (MUL) : 
+Clique no. 8 : (MUL) : 
+Clique no. 9 : (ADD) : 
+Clique no. 10 : (ADD) : 9 , 10 , 13 , 19 , 27 , 
+Clique no. 11 : (ADD) : 11 , 12 , 14 , 20 , 28 , 
+Clique no. 12 : (ADD) : 
+Clique no. 13 : (ADD) : 
+Clique no. 14 : (ADD) : 
+Clique no. 15 : (MUL) : 
+Clique no. 16 : (MUL) : 
+Clique no. 17 : (MUL) : 
+Clique no. 18 : (MUL) : 
+Clique no. 19 : (ADD) : 
+Clique no. 20 : (ADD) : 
+Clique no. 21 : (MUL) : 
+Clique no. 22 : (MUL) : 
+Clique no. 23 : (MUL) : 23 , 
+Clique no. 24 : (MUL) : 24 , 
+Clique no. 25 : (ADD) : 25 , 
+Clique no. 26 : (ADD) : 26 , 
+Clique no. 27 : (ADD) : 
+Clique no. 28 : (ADD) : 

@@ -1,0 +1,47 @@
+fir1 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 11
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 9
+Clique no. 1 : (imp) : 9 , 15 , 21 , 27 , 
+Clique no. 2 : (imp) : 10 , 16 , 22 , 28 , 
+Clique no. 3 : (add) : 11 , 17 , 23 , 29 , 41 , 43 , 45 , 46 , 47 , 
+Clique no. 4 : (imp) : 12 , 18 , 24 , 30 , 
+Clique no. 5 : (imp) : 13 , 19 , 25 , 31 , 
+Clique no. 6 : (add) : 14 , 20 , 26 , 32 , 42 , 44 , 
+Clique no. 7 : (imp) : 
+Clique no. 8 : (imp) : 
+Clique no. 9 : (add) : 
+Clique no. 10 : (imp) : 
+Clique no. 11 : (imp) : 
+Clique no. 12 : (add) : 
+Clique no. 13 : (imp) : 
+Clique no. 14 : (imp) : 
+Clique no. 15 : (add) : 
+Clique no. 16 : (imp) : 
+Clique no. 17 : (imp) : 
+Clique no. 18 : (add) : 
+Clique no. 19 : (imp) : 
+Clique no. 20 : (imp) : 
+Clique no. 21 : (add) : 
+Clique no. 22 : (imp) : 
+Clique no. 23 : (imp) : 
+Clique no. 24 : (add) : 
+Clique no. 25 : (mul) : 33 , 35 , 37 , 39 , 
+Clique no. 26 : (mul) : 34 , 36 , 38 , 40 , 
+Clique no. 27 : (mul) : 
+Clique no. 28 : (mul) : 
+Clique no. 29 : (mul) : 
+Clique no. 30 : (mul) : 
+Clique no. 31 : (mul) : 
+Clique no. 32 : (mul) : 
+Clique no. 33 : (add) : 
+Clique no. 34 : (add) : 
+Clique no. 35 : (add) : 
+Clique no. 36 : (add) : 
+Clique no. 37 : (add) : 
+Clique no. 38 : (add) : 
+Clique no. 39 : (add) : 
+Clique no. 40 : (exp) : 48 , 

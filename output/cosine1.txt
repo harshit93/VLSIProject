@@ -1,0 +1,89 @@
+cosine2 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 8
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 11
+Clique no. 1 : 
+Clique no. 2 : 
+Clique no. 3 : 
+Clique no. 4 : 1 , 2 , 4 , 13 , 35 , 
+Clique no. 5 : 5 , 10 , 16 , 25 , 
+Clique no. 6 : 3 , 6 , 32 , 33 , 51 , 72 , 
+Clique no. 7 : 7 , 11 , 19 , 27 , 
+Clique no. 8 : 8 , 14 , 37 , 
+Clique no. 9 : 9 , 12 , 52 , 55 , 
+Clique no. 10 : 
+Clique no. 11 : 
+Clique no. 12 : 
+Clique no. 13 : 
+Clique no. 14 : 
+Clique no. 15 : 
+Clique no. 16 : 
+Clique no. 17 : 
+Clique no. 18 : 
+Clique no. 19 : 
+Clique no. 20 : 
+Clique no. 21 : 15 , 18 , 21 , 24 , 53 , 71 , 
+Clique no. 22 : 22 , 39 , 
+Clique no. 23 : 23 , 
+Clique no. 24 : 
+Clique no. 25 : 
+Clique no. 26 : 26 , 36 , 44 , 60 , 
+Clique no. 27 : 
+Clique no. 28 : 28 , 38 , 46 , 62 , 
+Clique no. 29 : 29 , 31 , 54 , 57 , 74 , 
+Clique no. 30 : 30 , 56 , 73 , 
+Clique no. 31 : 
+Clique no. 32 : 
+Clique no. 33 : 
+Clique no. 34 : 34 , 58 , 
+Clique no. 35 : 
+Clique no. 36 : 
+Clique no. 37 : 
+Clique no. 38 : 
+Clique no. 39 : 
+Clique no. 40 : 40 , 64 , 70 , 
+Clique no. 41 : 41 , 
+Clique no. 42 : 42 , 66 , 
+Clique no. 43 : 43 , 
+Clique no. 44 : 
+Clique no. 45 : 45 , 
+Clique no. 46 : 
+Clique no. 47 : 47 , 
+Clique no. 48 : 48 , 68 , 
+Clique no. 49 : 49 , 
+Clique no. 50 : 50 , 
+Clique no. 51 : 
+Clique no. 52 : 
+Clique no. 53 : 
+Clique no. 54 : 
+Clique no. 55 : 
+Clique no. 56 : 
+Clique no. 57 : 
+Clique no. 58 : 
+Clique no. 59 : 59 , 
+Clique no. 60 : 
+Clique no. 61 : 61 , 
+Clique no. 62 : 
+Clique no. 63 : 63 , 
+Clique no. 64 : 
+Clique no. 65 : 65 , 
+Clique no. 66 : 
+Clique no. 67 : 67 , 
+Clique no. 68 : 
+Clique no. 69 : 17 , 20 , 69 , 
+Clique no. 70 : 
+Clique no. 71 : 
+Clique no. 72 : 
+Clique no. 73 : 
+Clique no. 74 : 
+Clique no. 75 : 75 , 79 , 
+Clique no. 76 : 76 , 80 , 
+Clique no. 77 : 77 , 81 , 
+Clique no. 78 : 78 , 82 , 
+Clique no. 79 : 
+Clique no. 80 : 
+Clique no. 81 : 
+Clique no. 82 : 

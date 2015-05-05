@@ -1,0 +1,58 @@
+h2v2_smooth_downsample_dfg__6 Benchmark
+1. Graph made
+2. ASAP Done
+No. of Control Steps: 16
+3. ALAP Done
+4. Switching Activity Matrix Prepared
+Total Number of Cliques: 6
+Clique no. 1 : (LOD) : 
+Clique no. 2 : (ADD) : 
+Clique no. 3 : (LOD) : 12 , 20 , 37 , 45 , 53 , 61 , 69 , 77 , 113 , 
+Clique no. 4 : (ADD) : 
+Clique no. 5 : (LOD) : 
+Clique no. 6 : (ADD) : 
+Clique no. 7 : (ADD) : 
+Clique no. 8 : (LOD) : 
+Clique no. 9 : (ADD) : 
+Clique no. 10 : (LOD) : 
+Clique no. 11 : (ADD) : 7 , 11 , 15 , 19 , 23 , 32 , 36 , 40 , 48 , 56 , 64 , 72 , 80 , 83 , 126 , 132 , 
+Clique no. 12 : (LOD) : 33 , 
+Clique no. 13 : (ADD) : 
+Clique no. 14 : (LOD) : 
+Clique no. 15 : (ADD) : 
+Clique no. 16 : (ADD) : 
+Clique no. 17 : (LOD) : 
+Clique no. 18 : (ADD) : 
+Clique no. 19 : (ADD) : 
+Clique no. 20 : (LOD) : 
+Clique no. 21 : (ADD) : 
+Clique no. 22 : (ADD) : 
+Clique no. 23 : (LOD) : 
+Clique no. 24 : (ADD) : 
+Clique no. 25 : (ADD) : 
+Clique no. 26 : (LOD) : 
+Clique no. 27 : (ADD) : 
+Clique no. 28 : (ADD) : 
+Clique no. 29 : (LOD) : 
+Clique no. 30 : (ADD) : 
+Clique no. 31 : (ADD) : 
+Clique no. 32 : (ADD) : 
+Clique no. 33 : (LOD) : 1 , 8 , 26 , 90 , 97 , 105 , 
+Clique no. 34 : (ADD) : 
+Clique no. 35 : (LOD) : 
+Clique no. 36 : (ADD) : 
+Clique no. 37 : (ADD) : 44 , 52 , 60 , 68 , 76 , 89 , 100 , 104 , 108 , 112 , 116 , 123 , 137 , 
+Clique no. 38 : (LOD) : 
+Clique no. 39 : (ADD) : 
+Clique no. 40 : (ADD) : 
+Clique no. 41 : (LOD) : 
+Clique no. 42 : (ADD) : 
+Clique no. 43 : (ADD) : 96 , 118 , 
+Clique no. 44 : (MUL) : 
+Clique no. 45 : (MUL) : 121 , 122 , 
+Clique no. 46 : (ADD) : 
+Clique no. 47 : (ADD) : 
+Clique no. 48 : (ASR) : 128 , 
+Clique no. 49 : (STR) : 130 , 
+Clique no. 50 : (ADD) : 
+Clique no. 51 : (ADD) : 
