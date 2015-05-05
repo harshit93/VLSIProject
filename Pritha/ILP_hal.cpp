@@ -35,7 +35,7 @@ typedef struct node {
 int main()
 {
 	ifstream file;	//File Handler
-	file.open("hal.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
+	file.open("Benchmarks/arf.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
 	node *arr[200];	
 	for(LL i=0;i<200;i++)
 		arr[i] = new node();

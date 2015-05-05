@@ -121,8 +121,8 @@ int main()
 
 	//binaryConv(randomgen());
 	ifstream file;	//File Handler
-	file.open("Benchmarks/hal.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
-	cout<<"hal Benchmark"<<endl;
+	file.open("Benchmarks/arf.dot",ios::in);	//Accessing the input file. It is in the .dot format. *Needs to be changed according to the input path of the file*
+	cout<<"arf Benchmark"<<endl;
 	node *arr[100000];	//node pointer file for all the nodes.
 	char num1[10];
 	char num2[10];
@@ -448,6 +448,7 @@ int main()
 			sam[i][j] = sam[i][j] /100 ;
 		}
 	}
+	//Matrix generation to be printed in files. !important
 	cout<<"4. Switching Activity Matrix Prepared"<<endl;
 
 
